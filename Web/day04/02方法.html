@@ -8,16 +8,49 @@
   </style>
 </head>
 <body>
+<input type="button" value="按钮" onclick="f1()">
+
+
+
 <!--html-->
 <script>
   //单行注释
   /*js多行注释*/
   //1. 无参无返回值
   function f1() {
-    console.log("f1")
+    console.log("f1");
   }
   //调用
   f1();
+  //2. 有参无返回值
+  function f2(name,age) {
+    console.log(name+":"+age);
+  }
+  f2("刘备",50);
+  //3. 无参有返回值
+  function f3() {
+    return "我是返回值!";
+  }
+  let info = f3();
+  console.log(info)
+  //4. 有参有返回值
+  function f4(x,y) {
+    return x*y;
+  }
+  let result = f4(5,9);
+  console.log(result);
+  //第二种声明方法的方式
+  let f5 = function (name,age) {
+    console.log(name+":"+age);
+  }
+  f5("诸葛亮",60);
+  //第三种声明方法的方式
+  let f6 = new Function("name","age","console.log(name+':'+age)");
+  f6("司马懿",80);
+
+
+
+
 
 
 </script>
