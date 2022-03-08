@@ -9,7 +9,7 @@
   <input type="button" value="按钮1" @click="f()">
   <input type="button" value="按钮2" v-on:click="f()">
   <!--值改变事件-->
-  <select @change="c()">
+  <select @change="c()" v-model="city">
     <option>北京</option>
     <option>上海</option>
     <option>广州</option>
@@ -17,14 +17,17 @@
 </div>
 <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/2.6.14/vue.min.js"></script>
 <script>
-  new Vue({
+  let v = new Vue({
     el:"div",
+    data:{
+      city:"北京"
+    },
     methods:{
       f:function () {
         console.log("按钮点击了");
       },
       c:function () {
-        console.log("值改变了");
+        console.log("值改变了:"+v.city);
       }
     }
   })
