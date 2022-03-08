@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+  <!--{{变量}}:插值,让此处显示的文本和变量进行绑定-->
+  {{info}}<b>{{info}}</b>
+  <h1>{{info}}</h1>
+  <!--v-text 让元素的文本内容和变量进行绑定,必须依赖某个标签-->
+  <p v-text="info"></p>
+  <!--v-html让元素的标签内容和变量进行绑定-->
+  <p v-html="info"></p>
+</div>
+<script src="vue.min.js"></script>
+<script>
+  new Vue({
+    el:"div",
+    data:{
+      info:"文本测试<b>加粗标签</b>"
+    }
+  })
+</script>
+</body>
+</html>
