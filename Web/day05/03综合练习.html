@@ -33,6 +33,11 @@
         //模拟一份从服务器请求回来的数据
         let p = {name:"美女",age:50,url:"../b.jpg",
             friends:["刘备","关羽","张飞"]};
+
+        let head_img = document.getElementById("head_img");
+        let name_td = document.getElementById("name_td");
+        let age_td = document.getElementById("age_td");
+        let friend_ul = document.getElementById("friend_ul");
         //把对象中的数据展示到页面中
         head_img.src = p.url;
         name_td.innerText = p.name;
