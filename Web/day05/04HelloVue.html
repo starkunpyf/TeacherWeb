@@ -5,7 +5,21 @@
     <title>Title</title>
 </head>
 <body>
+<div id="app">
+    <h1>{{info}}</h1>
+</div>
 
-
+<script src="vue.min.js"></script>
+<script>
+    //Vue对象是MVVM设计模式中的VM视图模型,负责将页面中可能发生改动的位置和变量进行绑定
+    //并且一直监听着变量的改变, 当值发生改变时 会自动找到页面中的内容进行修改
+   let v = new Vue({
+        el: "#app",   //el= element元素  设置需要管理的元素
+        data: {info: "Hello Vue!"} //data数据
+    })
+    setTimeout(function () {
+        v.info = "值改变了"
+    },2000);
+</script>
 </body>
 </html>
