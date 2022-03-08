@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  //定义一个空的Person对象
+  function Person() {}
+  //实例化一个Person对象
+  let p1 = new Person();
+  //动态添加属性
+  p1.name = "张三";
+  p1.age = 18;
+  //动态添加方法
+  p1.run = function () {
+    console.log("我叫"+this.name+"今年"+this.age);
+  }
+  //调用方法
+  p1.run();
+  //直接实例化对象
+  let p2 = {};
+  p2.name = "李白";
+  p2.age = 20;
+  p2.run = function () {
+      console.log("李白的方法执行了!");
+  }
+  p2.run();
+  //实例化自带属性和方法的对象
+  let p3 = {
+      name:"刘备",
+      age:30,
+      run:function () {
+          alert(this.name+":"+this.age);
+      }
+  }
+  p3.run();
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
