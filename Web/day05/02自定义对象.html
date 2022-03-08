@@ -5,6 +5,15 @@
     <title>Title</title>
 </head>
 <body>
+<table border="1">
+    <caption>商品列表</caption>
+    <tr>
+        <th>商品名</th>
+        <th>价格</th>
+        <th>库存</th>
+    </tr>
+</table>
+
 <script>
   //定义一个空的Person对象
   function Person() {}
@@ -36,6 +45,25 @@
       }
   }
   p3.run();
+  // 通过自定义对象封装数据
+    let arr = [{name:"小米手机",price:"3000",count:500},
+        {name:"小米电视",price:"3000",count:500},
+        {name:"华为手机",price:"3000",count:500},
+        {name:"华为电视",price:"3000",count:500}]
+
+    //把数组中商品信息展示到页面中
+  for (let item of arr) {
+      let tr = document.createElement("tr");
+      let nameTd = document.createElement("td");
+      let priceTd = document.createElement("td");
+      let countTd = document.createElement("td");
+      nameTd.innerText = item.name;
+      priceTd.innerText = item.price;
+      countTd.innerText = item.count;
+      tr.append(nameTd,priceTd,countTd);
+      let table = document.querySelector("table");
+      table.append(tr);
+  }
 
 
 
