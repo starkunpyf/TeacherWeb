@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+  <input type="button" value="按钮1" @click="f()">
+  <input type="button" value="按钮2" v-on:click="f()">
+</div>
+<script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/2.6.14/vue.min.js"></script>
+<script>
+  new Vue({
+    el:"div",
+    methods:{
+      f:function () {
+        console.log("按钮点击了");
+      }
+    }
+  })
+</script>
+</body>
+</html>
