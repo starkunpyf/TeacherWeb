@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <style>
+    .c1{
+      height: 30px;background-color: #0aa1ed;border-radius: 5px;
+      border:1px solid red;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+<el-row>
+  <el-col :span="12"><div class="c1">占12列</div></el-col>
+  <el-col :span="12"><div class="c1">占12列</div></el-col>
+</el-row>
+
+</div>
+</body>
+<script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/2.6.14/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function() {
+      return {
+
+      }
+    }
+  })
+</script>
+</html>
