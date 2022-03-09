@@ -27,7 +27,7 @@
       </td>
     </tr>
   </table>
-  <input type="button" value="请求数据">
+  <input type="button" value="请求数据" @click="f()">
 </div>
 <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/2.6.14/vue.min.js"></script>
 <script>
@@ -35,6 +35,14 @@
     el:"div",
     data:{
       p:{name:"xxx",age:0,url:"../day05/head.jpg",friends: ["xxx","xxx"]}
+    },
+    methods:{
+      f(){
+        let person = {name:"刘德华",age:50,url:"../b.jpg",
+          friends: ["张学友","周星驰"]};
+        //把模拟从服务器得到的数据赋值给和页面绑定的p变量 页面会自动发生改变
+        v.p=person;
+      }
     }
   })
 </script>
