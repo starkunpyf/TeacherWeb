@@ -13,6 +13,7 @@
     <el-button :plain="true" @click="open1">消息</el-button>
     <el-button :plain="true" @click="open4">错误</el-button>
   </template>
+  <button @click="f()">按钮</button>
 </div>
 </body>
 <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/2.6.14/vue.min.js"></script>
@@ -27,6 +28,9 @@
       }
     },
     methods: {
+      f(){
+        this.$message('测试成功!');
+      },
       open1() {
         this.$message('这是一条消息提示');
       },
