@@ -35,6 +35,25 @@
         <a href="">帮助中心</a>
       </span>
     </div>
+    <!--蓝条开始-->
+    <div>
+      <el-menu
+              :default-active="1"
+              class="el-menu-demo"
+              mode="horizontal"
+              @select="handleSelect"
+              background-color="#82c8ec"
+              text-color="#fff"
+              active-text-color="#fff">
+        <el-menu-item index="1">当季女装</el-menu-item>
+        <el-menu-item index="2">品牌男装</el-menu-item>
+        <el-menu-item index="3">环球美食</el-menu-item>
+        <el-menu-item index="4">医药健康</el-menu-item>
+        <el-menu-item index="5">美妆彩妆</el-menu-item>
+        <el-menu-item index="6">母婴产品</el-menu-item>
+      </el-menu>
+    </div>
+    <!--蓝条结束-->
   </el-header>
   <el-main></el-main>
   <el-footer></el-footer>
@@ -50,6 +69,10 @@
     el: '#app',
     data: function() {
       return {
+
+      }
+    },methods:{
+      handleSelect(){
 
       }
     }
