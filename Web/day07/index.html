@@ -95,6 +95,23 @@
         </el-card>
       </el-col>
     </el-row>
+    <!--商品列表开始-->
+      <el-row :gutter="20">
+        <el-col :span="6" v-for="i in 12">
+          <el-card :body-style="{ padding: '0px' }">
+            <img src="imgs/a.jpg" width="100%" class="image">
+            <div style="padding: 14px;">
+              <p>BEASTER小恶魔鬼脸加厚保暖夹克潮流冬宽松仿羊羔毛外套</p>
+              <div class="bottom clearfix" style="color: #6c6c6c">
+                <span>￥229
+                  <small style="text-decoration: line-through">￥698</small></span>
+                <span style="float: right">销量:2342件</span>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+    <!--商品列表结束-->
   </el-main>
   <el-footer></el-footer>
 </el-container>
