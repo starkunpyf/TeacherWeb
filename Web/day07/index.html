@@ -24,6 +24,13 @@
     .el-table .el-table__cell{
       padding: 0;
     }
+    /*给图片添加阴影*/
+    .item_div>img:hover{
+      position: relative;
+      bottom: 5px;
+      /*元素阴影: x偏移值 y偏移值 浓度 范围 颜色*/
+      box-shadow: 0 0 12px 5px #333;
+    }
   </style>
 </head>
 <body>
@@ -99,9 +106,12 @@
       <el-row :gutter="20">
         <el-col :span="6" v-for="i in 12">
           <el-card :body-style="{ padding: '0px' }">
-            <img src="imgs/a.jpg" width="100%" class="image">
+            <div class="item_div" style="padding: 20px 20px 0 20px">
+              <img src="imgs/a.jpg" width="100%" class="image">
+            </div>
+
             <div style="padding: 14px;">
-              <p>BEASTER小恶魔鬼脸加厚保暖夹克潮流冬宽松仿羊羔毛外套</p>
+              <p style="margin-top: 0">BEASTER小恶魔鬼脸加厚保暖夹克潮流冬宽松仿羊羔毛外套</p>
               <div class="bottom clearfix" style="color: #6c6c6c">
                 <span>￥229
                   <small style="text-decoration: line-through">￥698</small></span>
