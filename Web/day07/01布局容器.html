@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="css/eui.css">
+  <style>
+    header{
+      background-color: red;
+      text-align: center;
+      line-height: 50px;
+    }
+    main{
+      background-color: yellow;
+      text-align: center;
+      line-height: 200px;
+    }
+    footer{
+      background-color: blue;
+      text-align: center;
+      line-height: 50px;
+    }
+    aside{
+      background-color: green;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <h1>头和体两部分</h1>
+<el-container>
+  <el-header>头部区域</el-header>
+  <el-main>主体区域</el-main>
+</el-container>
+  <h1>头体脚</h1>
+  <el-container>
+    <el-header>头部区域</el-header>
+    <el-main>主体区域</el-main>
+    <el-footer>脚部区域</el-footer>
+  </el-container>
+  <h1>侧边栏+主体</h1>
+  <el-container>
+    <el-aside width="200px">侧边栏</el-aside>
+    <el-main>主体区域</el-main>
+  </el-container>
+  <h1>上+(侧边栏+主体)</h1>
+  <el-container>
+    <el-header>头部区域</el-header>
+    <el-container>
+      <el-aside width="200px">侧边栏</el-aside>
+      <el-main>主体区域</el-main>
+    </el-container>
+  </el-container>
+  <h1>上+(侧边栏+(主体+脚))</h1>
+
+  <h1>侧边栏+(上,中,下)</h1>
+
+</div>
+</body>
+<script src="js/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="js/eui.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function() {
+      return {
+
+      }
+    }
+  })
+</script>
+</html>
