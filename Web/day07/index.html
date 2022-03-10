@@ -20,7 +20,10 @@
     .el-input__inner{
       padding-right: 35px;
     }
-
+    /*销量排行榜表格间距*/
+    .el-table .el-table__cell{
+      padding: 0;
+    }
   </style>
 </head>
 <body>
@@ -77,6 +80,7 @@
       <el-col :span="6">
         <el-card>
           <h3><i style="font-weight: bold" class="el-icon-trophy"></i>销量最高</h3>
+          <el-divider></el-divider>
           <!--销量排行榜开始-->
           <el-table :data="itemArr" style="width: 500px">
             <!--type="index" 列的内容为序号-->
@@ -88,7 +92,7 @@
             </el-table-column>
           </el-table>
           <!--销量排行榜结束-->
-          <el-divider></el-divider>
+
         </el-card>
       </el-col>
     </el-row>
