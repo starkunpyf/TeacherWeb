@@ -110,7 +110,7 @@
               <img :src="i.url" width="100%" class="image">
             </div>
             <div style="padding: 14px;">
-              <p style="margin-top: 0;font-size: 15px">{{i.name}}</p>
+              <p style="margin-top: 0;font-size: 15px;height: 38px">{{i.name}}</p>
               <div class="bottom clearfix" style="color: #6c6c6c">
                 <span>￥{{i.price}}
                   <small style="text-decoration: line-through">￥{{i.oldPrice}}</small></span>
@@ -122,7 +122,16 @@
       </el-row>
     <!--商品列表结束-->
   </el-main>
-  <el-footer></el-footer>
+  <el-footer>
+    <div style="background-image: url('imgs/wave.png');
+    height: 95px;margin-bottom: -30px"></div>
+    <div style="background-color: #3f3f3f;padding: 30px;
+    text-align: center;color: #b1b1b1;font-size: 14px;height: 100px">
+      <p>Copyright © 北京达内金桥科技有限公司版权所有 京ICP备12003709号-3 京公网安备 11010802029572号</p>
+      <p>涵盖20余门课程体系，致力于打造权威的IT职业教育学习平台</p>
+      <p>达内在线WWW.TMOOC.CN 专注于IT职业技能培训</p>
+    </div>
+  </el-footer>
 </el-container>
 
 </div>
