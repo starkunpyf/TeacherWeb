@@ -53,9 +53,25 @@
     </el-container>
   </el-container>
   <h1>上+(侧边栏+(主体+脚))</h1>
-
+  <el-container>
+    <el-header>头部区域</el-header>
+    <el-container>
+      <el-aside width="200px">侧边栏</el-aside>
+      <el-container>
+        <el-main>主体区域</el-main>
+        <el-footer>脚部区域</el-footer>
+      </el-container>
+    </el-container>
+  </el-container>
   <h1>侧边栏+(上,中,下)</h1>
-
+  <el-container>
+    <el-aside width="200px">侧边栏</el-aside>
+    <el-container>
+      <el-header>上</el-header>
+      <el-main>中</el-main>
+      <el-footer>下</el-footer>
+    </el-container>
+  </el-container>
 </div>
 </body>
 <script src="js/vue.min.js"></script>
