@@ -65,7 +65,7 @@
   </el-header>
   <el-main style="width: 1200px;margin: 100px auto 0 auto">
     <el-row :gutter="20">
-      <el-col :span="20">
+      <el-col :span="18">
         <!--走马灯开始-->
         <el-carousel trigger="click" height="300px">
           <el-carousel-item v-for="item in arr" :key="item">
@@ -74,7 +74,23 @@
         </el-carousel>
         <!--走马灯结束-->
       </el-col>
-      <el-col :span="4"></el-col>
+      <el-col :span="6">
+        <el-card>
+          <h3><i style="font-weight: bold" class="el-icon-trophy"></i>销量最高</h3>
+          <!--销量排行榜开始-->
+          <el-table :data="itemArr" style="width: 500px">
+            <!--type="index" 列的内容为序号-->
+            <el-table-column type="index" label="排名">
+            </el-table-column>
+            <el-table-column prop="name" label="商品名">
+            </el-table-column>
+            <el-table-column prop="count" label="销量">
+            </el-table-column>
+          </el-table>
+          <!--销量排行榜结束-->
+          <el-divider></el-divider>
+        </el-card>
+      </el-col>
     </el-row>
   </el-main>
   <el-footer></el-footer>
@@ -91,7 +107,13 @@
     data: function() {
       return {
         wd:"",
-        arr:["imgs/b1.jpg","imgs/b2.jpg","imgs/b3.jpg","imgs/b4.jpg"]
+        arr:["imgs/b1.jpg","imgs/b2.jpg","imgs/b3.jpg","imgs/b4.jpg"],
+        itemArr:[{name:"小米12pro",count:876543},
+          {name:"华为手表",count:76543},
+          {name:"最生活毛巾",count:6543},
+          {name:"双飞燕鼠标",count:543},
+          {name:"耐克运动服",count:43},
+          {name:"苹果手机",count:3}]
       }
     },methods:{
       handleSelect(){
