@@ -104,18 +104,17 @@
     </el-row>
     <!--商品列表开始-->
       <el-row :gutter="20">
-        <el-col :span="6" v-for="i in 12">
+        <el-col :span="6" v-for="i in mainArr">
           <el-card :body-style="{ padding: '0px' }">
             <div class="item_div" style="padding: 20px 20px 0 20px">
-              <img src="imgs/a.jpg" width="100%" class="image">
+              <img :src="i.url" width="100%" class="image">
             </div>
-
             <div style="padding: 14px;">
-              <p style="margin-top: 0">BEASTER小恶魔鬼脸加厚保暖夹克潮流冬宽松仿羊羔毛外套</p>
+              <p style="margin-top: 0;font-size: 15px">{{i.name}}</p>
               <div class="bottom clearfix" style="color: #6c6c6c">
-                <span>￥229
-                  <small style="text-decoration: line-through">￥698</small></span>
-                <span style="float: right">销量:2342件</span>
+                <span>￥{{i.price}}
+                  <small style="text-decoration: line-through">￥{{i.oldPrice}}</small></span>
+                <span style="float: right">销量:{{i.count}}件</span>
               </div>
             </div>
           </el-card>
@@ -143,7 +142,19 @@
           {name:"最生活毛巾",count:6543},
           {name:"双飞燕鼠标",count:543},
           {name:"耐克运动服",count:43},
-          {name:"苹果手机",count:3}]
+          {name:"苹果手机",count:3}],
+        mainArr:[{name:"森马牛仔裤女宽松慢跑裤运动风2022春季新款显瘦束脚长裤复古",price:233,oldPrice:598,url:"imgs/a.jpg",count:2342},
+          {name:"茵曼马甲连衣裙两件套春季新款娃娃领色织格长袖背心裙套装",price:233,oldPrice:598,url:"imgs/b.jpg",count:2342},
+          {name:"雪中飞墨绿色短袖t恤女夏2022新款纯棉半袖打底体恤夏季上衣潮ins",price:233,oldPrice:598,url:"imgs/c.jpg",count:2342},
+          {name:"【佟丽娅同款】鸭鸭明星同款羽绒服2021年冬季新款时尚连帽外套冬",price:233,oldPrice:598,url:"imgs/d.jpg",count:2342},
+          {name:"BEASTER小恶魔鬼脸明星同款夹克毛绒保暖加厚字母印花宽松外套ins",price:233,oldPrice:598,url:"imgs/e.jpg",count:2342},
+          {name:"香影毛呢外套女中长款2021年冬季新款气质韩版娃娃领紫色呢子大衣",price:233,oldPrice:598,url:"imgs/f.jpg",count:2342},
+          {name:"SEMIR森马商场同款打底针织毛衣纯色高领新品显瘦",price:233,oldPrice:598,url:"imgs/g.jpg",count:2342},
+          {name:"美特斯邦威女MTEE 贺岁系列中长款风衣736598",price:233,oldPrice:598,url:"imgs/h.jpg",count:2342},
+          {name:"imone2021秋款黑色小西装外套女韩版学生宽松学院风外套jk外套",price:233,oldPrice:598,url:"imgs/i.jpg",count:2342},
+          {name:"BEASTER 小恶魔明星同款保暖长袖街头潮流连帽卫衣情侣上衣",price:233,oldPrice:598,url:"imgs/j.jpg",count:2342},
+          {name:"憨厚皇后100%绵羊皮2021秋海宁真皮皮衣女长款修身绵羊皮风衣外",price:233,oldPrice:598,url:"imgs/k.jpg",count:2342},
+          {name:"美特斯邦威高腰牛仔裤女宽松小脚新款春秋彩色潮流女士牛仔",price:233,oldPrice:598,url:"imgs/a.jpg",count:2342}]
       }
     },methods:{
       handleSelect(){
