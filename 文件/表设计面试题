@@ -47,3 +47,6 @@ from trade t join person p on t.pid=p.id
 where time>='2021-2-15' and money not between -100 and 100
 and gender='女' and rel='亲戚';
 3. 查询三个平台分别收入的红包金额
+select type,sum(money) from trade where money>0 group by type;
+
+
