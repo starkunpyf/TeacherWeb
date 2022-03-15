@@ -1,9 +1,6 @@
 package cn.tedu;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Demo03 {
     public static void main(String[] args) throws SQLException {
@@ -17,7 +14,15 @@ public class Demo03 {
         //执行修改数据的SQL
 //        s.executeUpdate("update emp set name='Jerry' where name='Tom'");
         //执行删除
-        s.executeUpdate("delete from emp where name='Jerry'");
+//        s.executeUpdate("delete from emp where name='Jerry'");
+        //执行查询
+        ResultSet rs = s.executeQuery("select name,sal from emp");
+        //遍历结果集对象 rs.next()让游标往下移动一格 并且返回true或false true代表有下一条数据
+        while(rs.next()){
+            String name = rs.getString("name");
+            double sal = rs.getDouble("sal");
+            System.out.println(name+":"+sal);
+        }
         conn.close();
         System.out.println("执行完成!");
     }
