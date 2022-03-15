@@ -12,7 +12,8 @@
 
   - 流水表:  id, 时间time,红包金额money,红包类型type,人物id
 
-  create table trade(id int primary key auto_increment,time date,money int,type varchar(5),pid int);
+  create table trade(id int primary key auto_increment,time date,
+  money int,type varchar(5),pid int);
 
   - 人物表:  id, 名字name 性别gender 关系rel
 
@@ -22,17 +23,21 @@
 
   - 插入人物数据： 人物表:刘德华 男 亲戚 ，杨幂 女 亲戚 ，马云 男 同事，特朗普 男 朋友， 貂蝉 女 朋友
 
-    insert into person values(null,'刘德华','男','亲戚'),(null,'杨幂','女','亲戚'),(null,'马云','男','同事'),(null,'特朗普','男','朋友'),(null,'貂蝉','女','朋友');
+    insert into person values(null,'刘德华','男','亲戚'),(null,'杨幂','女','亲戚'),
+    (null,'马云','男','同事'),(null,'特朗普','男','朋友'),(null,'貂蝉','女','朋友');
 
   - 往流水表中插入数据:
 
     ​    刘德华 微信 收1000 2021-03-20
-
     ​    杨幂 现金 收500 发50 2021-04-14
-
     ​    马云 支付宝 收20000 发5 2021-03-11
-
     ​    特朗普 微信 收2000 2021-05-18
-
     ​    貂蝉 微信 发20000 2021-01-22
+    insert into trade values(null,'2021-03-20',1000,'微信',1),
+    (null,'2021-04-14',500,'现金',2),
+    (null,'2021-04-14',-50,'现金',2),
+    (null,'2021-03-11',20000,'支付宝',3),
+    (null,'2021-03-11',-5,'支付宝',3),
+    (null,'2021-05-18',2000,'微信',4),
+    (null,'2021-01-22',-20000,'微信',5);
 
