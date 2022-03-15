@@ -19,8 +19,12 @@ public class Demo03 {
         ResultSet rs = s.executeQuery("select name,sal from emp");
         //遍历结果集对象 rs.next()让游标往下移动一格 并且返回true或false true代表有下一条数据
         while(rs.next()){
-            String name = rs.getString("name");
-            double sal = rs.getDouble("sal");
+            //通过查询字段的名称获取数据
+//            String name = rs.getString("name");
+//            double sal = rs.getDouble("sal");
+            //通过查询字段的位置获取数据
+            String name = rs.getString(1);
+            double sal = rs.getDouble(2);
             System.out.println(name+":"+sal);
         }
         conn.close();
