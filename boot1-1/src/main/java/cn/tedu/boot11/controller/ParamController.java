@@ -15,4 +15,10 @@ public class ParamController {
         String info = request.getParameter("info");
         return "测试成功! info="+info;
     }
+
+    @RequestMapping("/param2")
+    @ResponseBody
+    public String param2(String name,int age){
+        return "测试成功! name="+name+" age="+age;
+    }
 }
