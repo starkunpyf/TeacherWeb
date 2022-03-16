@@ -19,6 +19,11 @@ http://localhost:8080/hello
 <a href="/hello">绝对路径1</a>
 <!--第二种一般访问站外资源时使用-->
 <a href="http://localhost:8080/hello">绝对路径2</a>
+<h2>通过form表单发出请求</h2>
+<form action="/hello">
+    <input type="text" name="info">
+    <input type="submit">
+</form>
 
 </body>
 </html>
