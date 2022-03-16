@@ -20,7 +20,19 @@ public class Demo05 {
             ps.setString(1,username);
             //执行查询
             ResultSet rs = ps.executeQuery();
-
+            //判断是否查询到了数据
+            if (rs.next()){
+                //得到查询回来的密码
+                String pw = rs.getString(1);
+                //pw代表正确密码   password代表用户输入的密码
+                if (pw.equals(password)){
+                    System.out.println("登录成功!");
+                }else{
+                    System.out.println("密码错误");
+                }
+            }else{
+                System.out.println("用户名不存在!");
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
