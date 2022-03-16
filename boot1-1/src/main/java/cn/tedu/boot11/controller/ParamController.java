@@ -1,5 +1,6 @@
 package cn.tedu.boot11.controller;
 
+import cn.tedu.boot11.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +21,12 @@ public class ParamController {
     @ResponseBody
     public String param2(String name,int age){
         return "测试成功! name="+name+" age="+age;
+    }
+
+    @RequestMapping("/param3")
+    @ResponseBody
+    public String param3(User user){
+        return "测试成功!"+user;
     }
 
 }
