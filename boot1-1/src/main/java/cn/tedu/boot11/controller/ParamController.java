@@ -21,4 +21,5 @@ public class ParamController {
     public String param2(String name,int age){
         return "测试成功! name="+name+" age="+age;
     }
+
 }
