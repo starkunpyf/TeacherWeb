@@ -11,6 +11,7 @@
     <modules>
         <module>jdbc01</module>
         <module>jdbc02</module>
+        <module>jdbc03</module>
     </modules>
 
     <properties>

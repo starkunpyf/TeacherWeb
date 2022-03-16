@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="jdbc02" />
         <module name="jdbc01" />
+        <module name="jdbc02" />
+        <module name="jdbc03" />
       </profile>
     </annotationProcessing>
   </component>
