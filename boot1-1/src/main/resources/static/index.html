@@ -6,5 +6,19 @@
 </head>
 <body>
 <h1>首页</h1>
+<h2>通过超链接发出请求</h2>
+<!--相对路径会相对于当前页面所处位置
+http://localhost:8080/aaa/bbb/index.html
+http://localhost:8080/aaa/bbb/hello
+-->
+<a href="hello">相对路径</a>
+<!--绝对路径和当前页面所处位置无关都是从工程根路径开始
+http://localhost:8080/aaa/bbb/index.html
+http://localhost:8080/hello
+-->
+<a href="/hello">绝对路径1</a>
+<!--第二种一般访问站外资源时使用-->
+<a href="http://localhost:8080/hello">绝对路径2</a>
+
 </body>
 </html>
