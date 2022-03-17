@@ -9,4 +9,5 @@ public interface EmpMapper {
     //会查找自定义对象类型里面的同名属性并调用get变量的方法
     @Insert("insert into myemp values(null,#{name},#{sal},#{job})")
     void insert(Emp emp);
+
 }
