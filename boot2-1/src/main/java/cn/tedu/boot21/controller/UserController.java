@@ -48,10 +48,15 @@ public class UserController {
                 //得到查询回来的正确密码
                 String pw = rs.getString(1);
                 //拿用户输入的密码和正确密码判断是否一样
+                if (pw.equals(user.getPassword())){
+                    return "登录成功!";
+                }else{
+                    return "密码错误!";
+                }
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return "登录成功!";
+        return "用户名不存在!";
     }
 }
