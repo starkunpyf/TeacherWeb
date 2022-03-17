@@ -90,7 +90,18 @@ public class EmpController {
     @RequestMapping("/update")
     public String update(Emp emp){
         System.out.println("emp = " + emp);
-
-        return "修改完成!";
+        //获取连接 执行修改SQL语句
+        try (Connection conn = DBUtils.getConn()){
+            String sql = "update myemp set name=?,sal=?,job=? where id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,emp.getName());
+            ps.setInt(2,emp.getSal());
+            ps.setString(3,emp.getJob());
+            ps.setInt(4,emp.getId());
+            ps.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return "修改完成!<a href='/select'>返回列表页面</a>";
     }
 }
