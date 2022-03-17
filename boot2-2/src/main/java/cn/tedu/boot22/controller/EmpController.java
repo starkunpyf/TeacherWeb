@@ -57,7 +57,7 @@ public class EmpController {
         }
         String html = "<table border=1>";
         html+="<caption>员工列表</caption>";
-        html+="<tr><th>id</th><th>名字</th><th>工资</th><th>工作</th></tr>";
+        html+="<tr><th>id</th><th>名字</th><th>工资</th><th>工作</th><th>操作</th></tr>";
         //把查询出来的员工信息添加到表格中
         for (Emp e:list) {
             html+="<tr>";
@@ -65,9 +65,25 @@ public class EmpController {
             html+="<td>"+e.getName()+"</td>";
             html+="<td>"+e.getSal()+"</td>";
             html+="<td>"+e.getJob()+"</td>";
+            html+="<td><a href='/delete?id="+e.getId()+"'>删除</a></td>";
             html+="</tr>";
         }
         html+="</table>";
         return html;
+    }
+
+    @RequestMapping("/delete")
+    public String delete(int id){
+        System.out.println("id = " + id);
+        //获取连接 执行删除的SQL语句
+        try (Connection conn = DBUtils.getConn()){
+            String sql = "delete from myemp where id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,id);
+            ps.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return "删除成功!";
     }
 }
