@@ -86,4 +86,11 @@ public class EmpController {
         }
         return "删除成功!";
     }
+
+    @RequestMapping("/update")
+    public String update(Emp emp){
+        System.out.println("emp = " + emp);
+
+        return "修改完成!";
+    }
 }
