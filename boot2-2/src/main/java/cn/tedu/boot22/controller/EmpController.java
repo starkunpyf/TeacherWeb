@@ -28,4 +28,17 @@ public class EmpController {
         }
         return "添加完成!";
     }
+
+    @RequestMapping("/select")
+    public String select(){
+        //获取连接 查询所有员工信息
+
+        String html = "<table border=1>";
+        html+="<caption>员工列表</caption>";
+        html+="<tr><th>id</th><th>名字</th><th>工资</th><th>工作</th></tr>";
+        //把查询出来的员工信息添加到表格中
+
+        html+="</table>";
+        return html;
+    }
 }
