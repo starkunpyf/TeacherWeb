@@ -11,8 +11,10 @@ public class UserController {
     @RequestMapping("/reg")
     public String reg(User user){
         System.out.println("user = " + user);
+        //获取数据库连接
+
+
+
         return "注册成功!";
     }
-
-
 }
