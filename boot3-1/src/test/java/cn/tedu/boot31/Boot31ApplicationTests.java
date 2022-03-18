@@ -30,6 +30,10 @@ class Boot31ApplicationTests {
             System.out.println(e.getName()+":"+e.getSal()+":"+e.getJob());
         }
     }
-
+    @Test
+    void test02(){
+        Emp e = mapper.selectById(4);
+        System.out.println(e);
+    }
 
 }
