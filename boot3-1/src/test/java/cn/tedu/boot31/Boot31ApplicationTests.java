@@ -41,4 +41,15 @@ class Boot31ApplicationTests {
         System.out.println(list);
     }
 
+    @Test
+    void test04(){
+        Emp e = new Emp();
+        e.setId(6);
+        e.setName("程咬金");
+        e.setSal(1000);
+        e.setJob("程序员");
+        int row = mapper.update(e);
+        System.out.println("行数="+row);
+    }
+
 }
