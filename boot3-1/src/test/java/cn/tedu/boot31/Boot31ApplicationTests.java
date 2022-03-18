@@ -52,4 +52,9 @@ class Boot31ApplicationTests {
         System.out.println("行数="+row);
     }
 
+    @Test
+    void test05(){
+        mapper.deleteById(6);
+    }
+
 }

@@ -1,10 +1,7 @@
 package cn.tedu.boot31.mapper;
 
 import cn.tedu.boot31.entity.Emp;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -30,6 +27,9 @@ public interface EmpMapper {
     @Update("update myemp set name=#{name},sal=#{sal},job=#{job} where id=#{id}")
     int update(Emp emp);
 
+    //删除注解
+    @Delete("delete from myemp where id=#{id}")
+    void deleteById(int id);
 
 
 
