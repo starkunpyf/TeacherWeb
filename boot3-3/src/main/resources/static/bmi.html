@@ -23,9 +23,9 @@
         methods:{
             f(){
                 //由于需要从form表单中获取传递的参数 使用post请求代码更简单
-                let data = new FormData(document.querySelector("form"));
+                let fd = new FormData(document.querySelector("form"));
                 //记住!!页面中有form表单 则使用post请求
-                axios.post("/bmi",data).then(function (response) {
+                axios.post("/bmi",fd).then(function (response) {
                     //把服务器返回的数据显示到页面中
                     v.info = response.data;
                 })
