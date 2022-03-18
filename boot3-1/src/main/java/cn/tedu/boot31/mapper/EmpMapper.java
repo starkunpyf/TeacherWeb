@@ -21,6 +21,10 @@ public interface EmpMapper {
     @Select("select * from myemp where id=#{id}")
     Emp selectById(int id);
 
+    //如果查询到的结果有多条数据 用一个对象作为返回会报错, 应该用集合
+    @Select("select * from myemp where name=#{name}")
+    List<Emp> selectByName(String name);
+
 
 
 }

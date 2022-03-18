@@ -35,5 +35,10 @@ class Boot31ApplicationTests {
         Emp e = mapper.selectById(4);
         System.out.println(e);
     }
+    @Test
+    void test03(){
+        List<Emp> list = mapper.selectByName("诸葛亮");
+        System.out.println(list);
+    }
 
 }
