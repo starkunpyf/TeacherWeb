@@ -48,4 +48,11 @@ public class EmpController {
         return "删除完成!<a href='/select'>返回列表页面</a>";
     }
 
+    @RequestMapping("/update")
+    public String update(Emp emp){
+        System.out.println("emp = " + emp);
+        mapper.update(emp);
+        return "修改完成!<a href='/select'>返回列表页面</a>";
+    }
+
 }
