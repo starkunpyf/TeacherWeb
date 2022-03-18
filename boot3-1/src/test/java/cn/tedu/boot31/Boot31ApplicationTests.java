@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 class Boot31ApplicationTests {
     //把Mapper装配进来
@@ -20,5 +22,14 @@ class Boot31ApplicationTests {
         e.setJob("军师");
         mapper.insert(e);
     }
+
+    @Test
+    void test01(){
+        List<Emp> list = mapper.select();
+        for (Emp e:list) {
+            System.out.println(e.getName()+":"+e.getSal()+":"+e.getJob());
+        }
+    }
+
 
 }
