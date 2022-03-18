@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AxiosController {
     @RequestMapping("/helloAxios")
-    public String helloAxios(){
+    public String helloAxios(String info){
 
-        return "测试成功!";
+        return "测试成功!"+info;
     }
 }

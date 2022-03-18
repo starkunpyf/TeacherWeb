@@ -8,7 +8,8 @@
 <h1>首页</h1>
 <div>
     <h2>{{info}}</h2>
-    <input type="button" value="异步请求" @click="f1()">
+    <input type="button" value="异步请求get" @click="f1()">
+    <input type="button" value="异步请求post" @click="f2()">
 </div>
 <script src="js/vue.min.js"></script>
 <script src="js/axios.min.js"></script>
@@ -23,8 +24,16 @@
                // alert("方法执行了!");
                 //发出异步请求 向/helloAxios发出异步的get请求
                 //response代表响应对象, 里面的data属性是服务器响应的内容
-                axios.get("/helloAxios").then(function (response) {
+                axios.get("/helloAxios?info=tom").then(function (response) {
                     alert("服务响应内容:"+response.data);
+                })
+            },
+            f2(){
+                let data = new FormData();
+                data.append("info","jerry");
+                //发出异步的post请求
+                axios.post("/helloAxios",data).then(function (response) {
+                    alert("接收到了响应:"+response.data);
                 })
             }
         }
