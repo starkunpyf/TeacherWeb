@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>身体指数BMI测试</h1>
+<form action="">
+    <input type="text" name="height" placeholder="请输入身高(米)">
+    <input type="text" name="weight" placeholder="请输入体重(公斤)">
+    <input type="button" value="开始测试" @click="f()">
+    <h2>结果:{{info}}</h2>
+</form>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"form",
+        data:{
+            info:""
+        },
+        methods:{
+            f(){
+                //由于需要从form表单中获取传递的参数 使用post请求代码更简单
+                let data = new FormData(document.querySelector("form"));
+                //记住!!页面中有form表单 则使用post请求
+                axios.post("/bmi",data).then(function (response) {
+                    //把服务器返回的数据显示到页面中
+                    v.info = response.data;
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>
