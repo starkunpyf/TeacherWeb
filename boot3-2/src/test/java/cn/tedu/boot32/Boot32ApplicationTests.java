@@ -20,4 +20,10 @@ class Boot32ApplicationTests {
         mapper.insert(u);
     }
 
+    @Test
+    void test01(){
+        User u = mapper.selectByUsername("liudehua");
+        System.out.println(u);
+    }
+
 }
