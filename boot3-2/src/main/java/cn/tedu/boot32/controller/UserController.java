@@ -22,4 +22,17 @@ public class UserController {
         mapper.insert(user);
         return "注册成功!";
     }
+
+    @RequestMapping("/login")
+    public String login(User user){
+        User u = mapper.selectByUsername(user.getUsername());
+        if (u!=null){
+            //拿查询到的密码和用户输入的密码比较  u代表查询到的  user代表用户输入的
+            if (u.getPassword().equals(user.getPassword())){
+                return "登录成功!";
+            }
+            return "密码错误!";
+        }
+        return "用户名不存在!";
+    }
 }
