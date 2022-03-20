@@ -20,6 +20,9 @@ public class EmpController {
 
     @RequestMapping("/select")
     public List<Emp> select(){
+        //当方法的返回值类型为自定义对象类型或集合类型时
+        //SpringMVC框架会自动将对象或集合里面的数据装成字符串(Json格式的字符串)
+        //最后再把字符串转成二进制数据 通过网络传输给客户端
         return mapper.select();
     }
 }
