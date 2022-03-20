@@ -11,7 +11,7 @@
     <input type="text" name="name" :value="emp.name">
     <input type="text" name="sal" :value="emp.sal">
     <input type="text" name="job" :value="emp.job">
-    <input type="button" value="修改">
+    <input type="button" value="修改" @click="update()">
 </form>
 <script src="js/vue.min.js"></script>
 <script src="js/axios.min.js"></script>
@@ -29,6 +29,17 @@
                 //服务返回的是一个员工的所有信息直接赋值给emp对象
                 v.emp = response.data;
             })
+        },
+        methods:{
+            update(){
+                //得到form表单里面的数据
+                let data = new FormData(document.querySelector("form"));
+                axios.post("/update",data).then(function (response) {
+                    alert("修改完成!");
+                    //显示到列表页面
+                    location.href="/list.html";
+                })
+            }
         }
     })
 </script>

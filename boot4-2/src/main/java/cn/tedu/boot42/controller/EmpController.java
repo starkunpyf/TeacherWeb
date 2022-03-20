@@ -34,4 +34,9 @@ public class EmpController {
 
         return mapper.selectById(id);
     }
+
+    @RequestMapping("/update")
+    public void update(Emp emp){
+        mapper.update(emp);
+    }
 }
