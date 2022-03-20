@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class EmpController {
     @Autowired(required = false)
@@ -14,5 +16,10 @@ public class EmpController {
     @RequestMapping("/insert")
     public void insert(Emp emp){
         mapper.insert(emp);
+    }
+
+    @RequestMapping("/select")
+    public List<Emp> select(){
+        return mapper.select();
     }
 }

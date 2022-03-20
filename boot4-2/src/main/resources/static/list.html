@@ -18,12 +18,23 @@
 <script src="js/vue.min.js"></script>
 <script src="js/axios.min.js"></script>
 <script>
-    new Vue({
+    let v = new Vue({
         el:"table",
         data:{
             arr:[{id:1,name:"张三",sal:2000,job:"销售"},
                 {id:2,name:"李四",sal:3000,job:"人事"},
                 {id:3,name:"王五",sal:4000,job:"程序员"}]
+        },
+        created:function () { //Vue对象创建完成调用的方法 ,
+            // 一般进入页面立即发请求的代码写在此方法中
+            //发出异步请求获取所有员工信息
+            // let v = this;
+            axios.get("/select").then(function (response) {
+                //alert(response.data);
+                //把服务器返回的所有员工信息给到arr数组,
+                //由于页面标签和arr数组进行了绑定, 数据一请求到 页面会立即发生改变
+                v.arr = response.data;
+            })
         }
     })
 </script>
