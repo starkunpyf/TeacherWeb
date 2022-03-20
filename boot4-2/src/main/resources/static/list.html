@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <caption>员工列表</caption>
+    <tr>
+        <th>id</th><th>名字</th><th>工资</th><th>工作</th>
+    </tr>
+    <tr v-for="emp in arr">
+        <td>{{emp.id}}</td><td>{{emp.name}}</td>
+        <td>{{emp.sal}}</td><td>{{emp.job}}</td>
+    </tr>
+</table>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    new Vue({
+        el:"table",
+        data:{
+            arr:[{id:1,name:"张三",sal:2000,job:"销售"},
+                {id:2,name:"李四",sal:3000,job:"人事"},
+                {id:3,name:"王五",sal:4000,job:"程序员"}]
+        }
+    })
+</script>
+</body>
+</html>
