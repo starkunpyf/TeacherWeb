@@ -25,4 +25,10 @@ public class EmpController {
         //最后再把字符串转成二进制数据 通过网络传输给客户端
         return mapper.select();
     }
+    @RequestMapping("/delete")
+    public void delete(int id){
+        mapper.deleteById(id);
+    }
+
+
 }
