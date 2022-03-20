@@ -16,4 +16,6 @@ public interface EmpMapper {
     @Select("select * from myemp")
     List<Emp> select();
 
+    @Select("select * from myemp where id=#{id}")
+    Emp selectById(int id);
 }

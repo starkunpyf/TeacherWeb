@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>修改页面</h1>
+<form action="">
+    <input type="text" name="id" :value="emp.id" readonly>
+    <input type="text" name="name" :value="emp.name">
+    <input type="text" name="sal" :value="emp.sal">
+    <input type="text" name="job" :value="emp.job">
+    <input type="button" value="修改">
+</form>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"form",
+        data:{
+            emp:{}
+        },
+        created:function () {
+            //得到地址栏中的员工id
+            let id = location.search.split("=")[1];
+            //发请求通过id查询员工详细信息
+            axios.get("/selectById?id="+id).then(function (response) {
+                //服务返回的是一个员工的所有信息直接赋值给emp对象
+                v.emp = response.data;
+            })
+        }
+    })
+</script>
+</body>
+</html>
