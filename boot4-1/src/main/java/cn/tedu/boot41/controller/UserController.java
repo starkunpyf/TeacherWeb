@@ -11,12 +11,12 @@ public class UserController {
     @Autowired(required = false)
     UserMapper mapper;
     @RequestMapping("/reg")
-    public String reg(User user){
+    public int reg(User user){
         User u = mapper.selectByUsername(user.getUsername());
         if (u!=null){
-            return "用户名已存在!";
+            return 2;//用户名已存在
         }
         mapper.insert(user);
-        return "注册成功!";
+        return 1;//注册成功
     }
 }
