@@ -31,7 +31,6 @@ public class EmpController {
     }
     @RequestMapping("/selectById")
     public Emp selectById(int id){
-
         return mapper.selectById(id);
     }
 

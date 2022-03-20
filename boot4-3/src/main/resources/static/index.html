@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>文件上传测试</h1>
+<form>
+    <input type="text" name="intro" placeholder="图片介绍">
+    <input type="file" name="picFile">
+    <input type="button" value="开始上传" @click="f()">
+</form>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    new Vue({
+        el:"form",
+        methods:{
+            f(){
+                //得到form表单里面的数据
+                let data = new FormData(document.querySelector("form"));
+                axios.post("/upload",data).then(function (response) {
+                    alert("上传完成!");
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>
