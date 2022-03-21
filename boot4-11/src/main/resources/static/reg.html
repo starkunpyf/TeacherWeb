@@ -23,8 +23,12 @@
                 let data = new FormData(document.querySelector("form"));
                 //发出注册的异步请求
                 axios.post("/reg",data).then(function (response) {
-                    //把服务器返回的数据在页面弹出
-                    alert(response.data);
+                    if (response.data==1){
+                        alert("注册成功!");
+                        location.href = "/";//跳转到首页
+                    }else{
+                        alert("用户名已存在!");
+                    }
                 })
             }
         }
