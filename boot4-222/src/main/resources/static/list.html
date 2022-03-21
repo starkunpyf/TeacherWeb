@@ -11,9 +11,29 @@
         <th>id</th><th>名字</th>
         <th>工资</th><th>工作</th>
     </tr>
-    <tr>
-        <td></td><td></td><td></td><td></td>
+    <tr v-for="emp in arr">
+        <td>{{emp.id}}</td><td>{{emp.name}}</td>
+        <td>{{emp.sal}}</td><td>{{emp.job}}</td>
     </tr>
 </table>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"table",
+        data:{
+            arr:[{id:1,name:"张三",sal:500,job:"销售"},
+                {id:2,name:"李四",sal:600,job:"人事"},
+                {id:3,name:"王五",sal:700,job:"程序员"}]
+        },
+        created:function () { //此方法页面创建完成后执行
+            //进入页面后发请求的代码都写在这个方法中
+            axios.get("/select").then(function (response) {
+                //把服务器返回的数据给到数组, 页面会自动发生改变
+                v.arr = response.data;
+            })
+        }
+    })
+</script>
 </body>
 </html>
