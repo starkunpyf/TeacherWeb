@@ -33,7 +33,8 @@ public class EmpController {
     @RequestMapping("/selectById")
     public Emp selectById(int id){
         System.out.println("id = " + id);
-        return null;
+
+        return mapper.selectById(id);
     }
 
 }
