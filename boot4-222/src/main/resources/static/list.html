@@ -37,7 +37,16 @@
         },
         methods:{
             del(id){
-                alert("删除的id="+id);
+                if (confirm("您确认删除此员工吗?")){
+                    //发出异步请求
+                    //删除请求 使用get
+                    axios.get("/delete?id="+id).then(function (response) {
+                        //删除完成后刷新页面
+                        location.reload();
+                    })
+                }
+
+
             }
         }
     })
