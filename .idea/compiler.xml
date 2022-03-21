@@ -8,19 +8,21 @@
         <outputRelativeToContentRoot value="true" />
         <module name="boot2-4" />
         <module name="boot2-3" />
-        <module name="boot2-2" />
+        <module name="boot3-3" />
         <module name="boot2-1" />
         <module name="boot4-2" />
         <module name="boot4-1" />
         <module name="boot4-0" />
         <module name="boot3-2" />
-        <module name="boot3-3" />
         <module name="boot3-1" />
-        <module name="jdbc01" />
-        <module name="boot1-1" />
-        <module name="boot4-3" />
-        <module name="jdbc03" />
         <module name="jdbc02" />
+        <module name="jdbc01" />
+        <module name="boot4-00" />
+        <module name="boot1-1" />
+        <module name="boot4-11" />
+        <module name="boot4-3" />
+        <module name="boot2-2" />
+        <module name="jdbc03" />
       </profile>
     </annotationProcessing>
   </component>
@@ -35,7 +37,9 @@
       <module name="boot3-2" options="-parameters" />
       <module name="boot3-3" options="-parameters" />
       <module name="boot4-0" options="-parameters" />
+      <module name="boot4-00" options="-parameters" />
       <module name="boot4-1" options="-parameters" />
+      <module name="boot4-11" options="-parameters" />
       <module name="boot4-2" options="-parameters" />
       <module name="boot4-3" options="-parameters" />
     </option>
