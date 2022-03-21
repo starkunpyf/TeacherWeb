@@ -9,11 +9,13 @@
     <caption>员工列表</caption>
     <tr>
         <th>id</th><th>名字</th>
-        <th>工资</th><th>工作</th>
+        <th>工资</th><th>工作</th><th>操作</th>
     </tr>
     <tr v-for="emp in arr">
         <td>{{emp.id}}</td><td>{{emp.name}}</td>
         <td>{{emp.sal}}</td><td>{{emp.job}}</td>
+        <!--href="javascript:void(0)废掉超链接的跳转功能-->
+        <td><a href="javascript:void(0)" @click="del(emp.id)">删除</a></td>
     </tr>
 </table>
 <script src="js/vue.min.js"></script>
@@ -22,16 +24,21 @@
     let v = new Vue({
         el:"table",
         data:{
-            arr:[{id:1,name:"张三",sal:500,job:"销售"},
-                {id:2,name:"李四",sal:600,job:"人事"},
-                {id:3,name:"王五",sal:700,job:"程序员"}]
+            arr:[]
         },
         created:function () { //此方法页面创建完成后执行
             //进入页面后发请求的代码都写在这个方法中
             axios.get("/select").then(function (response) {
                 //把服务器返回的数据给到数组, 页面会自动发生改变
+                //服务器返回的是二进制数据,会先将二进制数据转成Json格式的字符串
+                //然后axios框架会将JSON格式的字符串再转成数组里面装对象
                 v.arr = response.data;
             })
+        },
+        methods:{
+            del(id){
+                alert("删除的id="+id);
+            }
         }
     })
 </script>
