@@ -7,10 +7,10 @@
 <body>
 <h1>修改员工页面</h1>
 <form action="">
-    <input type="text" name="id" placeholder="id">
-    <input type="text" name="name" placeholder="名字">
-    <input type="text" name="sal" placeholder="工资">
-    <input type="text" name="job" placeholder="工作">
+    <input type="text" name="id" placeholder="id" :value="emp.id" readonly>
+    <input type="text" name="name" placeholder="名字" :value="emp.name">
+    <input type="text" name="sal" placeholder="工资" :value="emp.sal">
+    <input type="text" name="job" placeholder="工作" :value="emp.job">
     <input type="button" value="修改">
 </form>
 <script src="js/vue.min.js"></script>
@@ -24,7 +24,11 @@
         created:function () {
             //获取地址栏中的id
             let id = location.search.split("=")[1];
-            alert("员工id="+id);
+            //通过id查询员工的所有信息
+            axios.get("/selectById?id="+id).then(function (response) {
+                //把查询回来的员工信息赋值给员工对象.
+                v.emp = response.data;
+            })
         }
     })
 </script>
