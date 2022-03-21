@@ -10,8 +10,25 @@
     <input type="text" name="username" placeholder="用户名">
     <input type="text" name="password" placeholder="密码">
     <input type="text" name="nick" placeholder="昵称">
-    <input type="button" value="注册">
+    <input type="button" value="注册" @click="reg()">
 </form>
-
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"form",
+        methods:{
+            reg(){
+                //得到form表单里面的数据
+                let data = new FormData(document.querySelector("form"));
+                //发出注册的异步请求
+                axios.post("/reg",data).then(function (response) {
+                    //把服务器返回的数据在页面弹出
+                    alert(response.data);
+                })
+            }
+        }
+    })
+</script>
 </body>
 </html>
