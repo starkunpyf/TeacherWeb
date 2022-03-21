@@ -30,6 +30,4 @@ public class EmpController {
     public void delete(int id){
         mapper.deleteById(id);
     }
-
-
 }
