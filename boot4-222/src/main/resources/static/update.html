@@ -11,7 +11,7 @@
     <input type="text" name="name" placeholder="名字" :value="emp.name">
     <input type="text" name="sal" placeholder="工资" :value="emp.sal">
     <input type="text" name="job" placeholder="工作" :value="emp.job">
-    <input type="button" value="修改">
+    <input type="button" value="修改" @click="update()">
 </form>
 <script src="js/vue.min.js"></script>
 <script src="js/axios.min.js"></script>
@@ -29,6 +29,16 @@
                 //把查询回来的员工信息赋值给员工对象.
                 v.emp = response.data;
             })
+        },
+        methods:{
+            update(){
+                //得到form表单里面的数据
+                let data = new FormData(document.querySelector("form"));
+                axios.post("/update",data).then(function (response) {
+                    alert("修改完成!");
+                    location.href="/list.html";
+                })
+            }
         }
     })
 </script>
