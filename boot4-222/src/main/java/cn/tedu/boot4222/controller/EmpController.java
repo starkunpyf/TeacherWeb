@@ -30,4 +30,10 @@ public class EmpController {
     public void delete(int id){
         mapper.deleteById(id);
     }
+    @RequestMapping("/selectById")
+    public Emp selectById(int id){
+        System.out.println("id = " + id);
+        return null;
+    }
+
 }
