@@ -23,7 +23,10 @@
   <el-dialog :visible.sync="dialogVisible">
     <img width="100%" :src="dialogImageUrl" alt="">
   </el-dialog>
-
+  <form action="">
+    <input type="text" name="content" v-model="weibo.content" placeholder="说点儿什么...">
+    <input type="button" value="发布微博" @click="send()">
+  </form>
 </div>
 </body>
 <script src="js/vue.min.js"></script>
@@ -31,12 +34,16 @@
 <script src="js/eui.js"></script>
 <script src="js/axios.min.js"></script>
 <script>
-  new Vue({
+  let v = new Vue({
     el: '#app',
     data: function() {
       return {
         dialogImageUrl: '',
-        dialogVisible: false
+        dialogVisible: false,
+        weibo:{
+          content:"",
+          urls:""  //urls表示上传的多张图片的路径
+        }
       }
     },
     methods: {
@@ -54,6 +61,20 @@
       },
       uploadSuccess(response,file,fileList){//文件上传完成后会调用此方法
         console.log("上传完成:"+response);
+        //fileList代表此时客户端上传过的所有文件对象
+        // 把所有文件对象中的图片路径得到拼接成一个字符串
+        let arr = [];
+        for (let f of fileList) {
+            arr.push(f.response);// f.response代表服务器上传完图片返回的图片路径
+        }
+        //把数据里面的图片路径 通过toString可以拼成一个字符串
+        v.weibo.urls = arr.toString();
+      },
+      send(){
+        //如果提交的参数为JS中的自定义对象, 在Controller中接收参数时需要添加一个注解
+        axios.post("/insert",v.weibo).then(function () {
+          alert("微博发布完成!");
+        })
       }
     }
   })
