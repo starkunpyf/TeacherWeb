@@ -7,8 +7,14 @@
 </head>
 <body>
 <div id="app">
+  <!--action:文件上传地址
+  name参数名
+  on-success图片上传完成时调用的方法
+  -->
   <el-upload
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="/upload"
+          name="picFile"
+          :on-success="uploadSuccess"
           list-type="picture-card"
           :on-preview="handlePictureCardPreview"
           :on-remove="handleRemove">
@@ -39,6 +45,9 @@
       handlePictureCardPreview(file) {
         this.dialogImageUrl = file.url;
         this.dialogVisible = true;
+      },
+      uploadSuccess(response,file,fileList){//文件上传完成后会调用此方法
+        console.log("上传完成:"+response);
       }
     }
   })
