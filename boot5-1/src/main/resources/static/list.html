@@ -9,6 +9,9 @@
 <div>
     <div v-for="weibo in arr">
         <h3>{{weibo.content}}</h3>
+        <!--遍历新增的urlArr数组 每遍历一次生成一个图片标签-->
+        <img v-for="url in weibo.urlArr" :src="url"
+             style="width: 100px;height: 100px" alt="">
         <hr>
     </div>
 </div>
@@ -24,6 +27,13 @@
             //进入页面后立即发请求获取所有微博的数据
             axios.get("/select").then(function (response) {
                 v.arr = response.data;
+                for (let weibo of v.arr) {
+                    //给微博对象添加一个url数组的属性里面是多个图片路径
+                    weibo.urlArr = weibo.urls.split(",");
+                }
+
+
+
             })
         }
     })
