@@ -39,6 +39,21 @@
             }
         }
     })
+    //获取cookie里面的数据
+    let cookieStr = document.cookie;
+    //'username=tom; password=123456'
+    let cookieArr = cookieStr.split(";");
+    for (let cookie of cookieArr) {
+        let arr = cookie.split("=")
+        let name = arr[0].trim();  // trim()去掉空格
+        let value = arr[1];
+        if (name=="username"){
+            v.user.username = value;
+        }else if (name=="password"){
+            v.user.password = value;
+        }
+    }
+
 </script>
 </body>
 </html>
