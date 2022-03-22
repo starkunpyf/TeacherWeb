@@ -54,6 +54,15 @@
             alert("服务器图片已删除!");
         })
 
+        //fileList代表此时客户端上传过的所有文件对象
+        // 把所有文件对象中的图片路径得到拼接成一个字符串
+        let arr = [];
+        for (let f of fileList) {
+          arr.push(f.response);// f.response代表服务器上传完图片返回的图片路径
+        }
+        //把数据里面的图片路径 通过toString可以拼成一个字符串
+        v.weibo.urls = arr.toString();
+
       },
       handlePictureCardPreview(file) {
         this.dialogImageUrl = file.url;
