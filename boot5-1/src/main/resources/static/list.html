@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>微博列表页面</h1>
+<div>
+    <div v-for="weibo in arr">
+        <h3>{{weibo.content}}</h3>
+        <hr>
+    </div>
+</div>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"body>div",
+        data:{
+            arr:[]
+        },
+        created:function () {
+            //进入页面后立即发请求获取所有微博的数据
+            axios.get("/select").then(function (response) {
+                v.arr = response.data;
+            })
+        }
+    })
+</script>
+</body>
+</html>

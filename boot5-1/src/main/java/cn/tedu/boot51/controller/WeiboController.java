@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class WeiboController {
     @Autowired(required = false)
@@ -17,5 +19,10 @@ public class WeiboController {
         // 需要通过@RequestBody注解修饰接收数据的参数
         System.out.println("weibo = " + weibo);
         mapper.insert(weibo);
+    }
+
+    @RequestMapping("/select")
+    public List<Weibo> select(){
+        return mapper.select();
     }
 }
