@@ -53,7 +53,6 @@
         axios.get("/remove?name="+file.response).then(function () {
             alert("服务器图片已删除!");
         })
-
         //fileList代表此时客户端上传过的所有文件对象
         // 把所有文件对象中的图片路径得到拼接成一个字符串
         let arr = [];
@@ -80,7 +79,6 @@
         v.weibo.urls = arr.toString();
       },
       send(){
-
         //如果提交的参数为JS中的自定义对象, 在Controller中接收参数时需要添加一个注解
         axios.post("/insert",v.weibo).then(function () {
           alert("微博发布完成!");
