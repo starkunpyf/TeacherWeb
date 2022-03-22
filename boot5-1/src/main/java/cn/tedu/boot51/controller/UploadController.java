@@ -32,6 +32,19 @@ public class UploadController {
         //把上传的文件保存到上面指定的路径   异常抛出
         picFile.transferTo(new File(filePath));
 
-        return "测试上传";
+        //把图片在服务器中的路径返回给客户端
+        return "/"+fileName;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
