@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>登录页面</h1>
+<form action="">
+    <input type="text" name="username" v-model="user.username" placeholder="用户名">
+    <input type="password" name="password" v-model="user.password" placeholder="密码">
+    <input type="button" value="登录" @click="login()">
+</form>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"form",
+        data:{
+            user:{
+                username:"",
+                password:""
+            }
+        }
+    })
+</script>
+</body>
+</html>

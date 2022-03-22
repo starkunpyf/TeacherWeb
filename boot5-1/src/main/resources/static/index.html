@@ -83,6 +83,7 @@
         //如果提交的参数为JS中的自定义对象, 在Controller中接收参数时需要添加一个注解
         axios.post("/insert",v.weibo).then(function () {
           alert("微博发布完成!");
+          location.reload();
         })
       }
     }

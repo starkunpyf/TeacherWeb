@@ -29,7 +29,8 @@
                 v.arr = response.data;
                 for (let weibo of v.arr) {
                     //给微博对象添加一个url数组的属性里面是多个图片路径
-                    weibo.urlArr = weibo.urls.split(",");
+                    //如果图片路径是空字符串则直接赋值为空数组, 如果不是再拆分
+                    weibo.urlArr = weibo.urls==""?[]:weibo.urls.split(",");
                 }
 
 
