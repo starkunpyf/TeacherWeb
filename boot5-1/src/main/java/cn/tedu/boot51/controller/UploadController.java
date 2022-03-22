@@ -35,6 +35,17 @@ public class UploadController {
         //把图片在服务器中的路径返回给客户端
         return "/"+fileName;
     }
+
+    @RequestMapping("/remove")
+    public void remove(String name){
+        //文件夹路径
+        String dirPath = "D:/file";
+        //得到文件的完整路径
+        String file = dirPath+name;
+        System.out.println("删除的文件路径:"+file);
+        //删除服务器中的文件
+        new File(file).delete();
+    }
 }
 
 
