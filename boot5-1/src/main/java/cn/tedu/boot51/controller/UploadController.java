@@ -5,13 +5,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.UUID;
 
 @RestController
 public class UploadController {
 
     @RequestMapping("/upload")
-    public String upload(MultipartFile picFile){
+    public String upload(MultipartFile picFile) throws IOException {
         //得到原始文件名
         String fileName = picFile.getOriginalFilename();
         //得到后缀  .jpg
@@ -26,6 +27,10 @@ public class UploadController {
         if (!dirFile.exists()){
             dirFile.mkdirs();//创建文件夹
         }
+        //准备一个完整的文件路径
+        String filePath = dirPath+"/"+fileName;
+        //把上传的文件保存到上面指定的路径   异常抛出
+        picFile.transferTo(new File(filePath));
 
         return "测试上传";
     }
