@@ -7,8 +7,9 @@
 <body>
 <h1>登录页面</h1>
 <form action="">
-    <input type="text" name="username" v-model="user.username" placeholder="用户名">
-    <input type="password" name="password" v-model="user.password" placeholder="密码">
+    <input type="text" name="username" v-model="user.username" placeholder="用户名"><br>
+    <input type="password" name="password" v-model="user.password" placeholder="密码"><br>
+    <input type="checkbox" name="rem" v-model="user.rem">记住用户名和密码<br>
     <input type="button" value="登录" @click="login()">
 </form>
 <script src="js/vue.min.js"></script>
@@ -19,7 +20,8 @@
         data:{
             user:{
                 username:"",
-                password:""
+                password:"",
+                rem:""
             }
         },
         methods:{
