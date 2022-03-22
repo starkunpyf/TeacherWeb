@@ -24,6 +24,8 @@
         <module name="boot2-2" />
         <module name="jdbc03" />
         <module name="boot4-222" />
+        <module name="boot5-0" />
+        <module name="boot5-1" />
       </profile>
     </annotationProcessing>
   </component>
@@ -44,6 +46,8 @@
       <module name="boot4-2" options="-parameters" />
       <module name="boot4-222" options="-parameters" />
       <module name="boot4-3" options="-parameters" />
+      <module name="boot5-0" options="-parameters" />
+      <module name="boot5-1" options="-parameters" />
     </option>
   </component>
 </project>

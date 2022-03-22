@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>修改员工页面</h1>
+<form action="">
+    <input type="text" name="id" :value="emp.id" readonly>
+    <input type="text" name="name" :value="emp.name">
+    <input type="text" name="sal" :value="emp.sal">
+    <input type="text" name="job" :value="emp.job">
+    <input type="button" value="修改" @click="update()">
+</form>
+<script src="js/axios.min.js"></script>
+<script src="js/vue.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"form",
+        data:{
+            emp:{}
+        },
+        created:function () {
+            //得到地址栏中的id
+            let id = location.search.split("=")[1];
+            //通过id查询员工信息
+            axios.get("/selectById?id="+id).then(function (response) {
+                v.emp = response.data;
+            })
+        },
+        methods:{
+            update:function () {
+                let data = new FormData(document.querySelector("form"));
+                axios.post("/update",data).then(function (response) {
+                    //返回列表页面
+                    location.href="/list.html";
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>
