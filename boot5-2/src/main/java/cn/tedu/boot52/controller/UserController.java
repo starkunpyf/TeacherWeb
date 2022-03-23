@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @RestController
 public class UserController {
@@ -16,12 +17,17 @@ public class UserController {
     UserMapper mapper;
 
     @RequestMapping("/login")
-    public int login(@RequestBody User user, HttpServletResponse response){
+    public int login(@RequestBody User user, HttpSession session, HttpServletResponse response){
         System.out.println("user = " + user);
 
         User u = mapper.selectByUsername(user.getUsername());
         if (u!=null){
             if (u.getPassword().equals(user.getPassword())){
+                //登录成功后把从数据库里面查询到的用户对象保存到Session会话对象中
+                session.setAttribute("user",u);
+
+
+
                 //判断是否需要记住用户名和密码
                 if (user.isRem()){
                     //创建Cookie记住用户名和密码
