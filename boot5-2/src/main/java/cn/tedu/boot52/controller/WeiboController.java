@@ -56,4 +56,9 @@ public class WeiboController {
         return mapper.selectByUserId(u.getId());
     }
 
+    @RequestMapping("/delete")
+    public void delete(int id){
+        mapper.deleteById(id);
+    }
+
 }

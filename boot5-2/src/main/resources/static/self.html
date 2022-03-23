@@ -28,6 +28,15 @@
             axios.get("/selectSelf").then(function (response) {
                 v.arr = response.data;
             })
+        },
+        methods:{
+            del(id){
+                if (confirm("您确认删除此微博吗?")){
+                    axios.get("/delete?id="+id).then(function () {
+                        location.reload();//刷新页面
+                    })
+                }
+            }
         }
     })
 </script>
