@@ -6,6 +6,9 @@
 </head>
 <body>
 <div>
+    <h1>{{weibo.nick}}说:{{weibo.content}}</h1>
+    <img v-for="url in weibo.urlArr" :src="url" style="width: 300px">
+    <div>发布于:{{weibo.created}}</div>
 </div>
 <script src="js/vue.min.js"></script>
 <script src="js/axios.min.js"></script>
@@ -21,6 +24,8 @@
             //通过id查询微博详情
             axios.get("/selectById?id="+id).then(function (response) {
                 v.weibo = response.data;
+                //通过逗号将多个图片路径变成数组
+                v.weibo.urlArr = v.weibo.urls==""?[]:v.weibo.urls.split(",");
             })
         }
     })

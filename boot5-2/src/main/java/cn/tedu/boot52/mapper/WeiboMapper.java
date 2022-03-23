@@ -15,4 +15,8 @@ public interface WeiboMapper {
 
     @Select("select * from weibo order by created desc")
     List<Weibo> select();
+
+    @Select("select * from weibo where id=#{id}")
+    Weibo selectById(int id);
+
 }

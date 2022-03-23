@@ -40,5 +40,10 @@ public class WeiboController {
     public List<Weibo> select(){
         return mapper.select();
     }
+    @RequestMapping("/selectById")
+    public Weibo selectById(int id){
+
+        return mapper.selectById(id);
+    }
 
 }
