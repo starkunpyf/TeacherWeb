@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 public class CommentController {
@@ -25,5 +26,10 @@ public class CommentController {
         comment.setNick(u.getNick());
         mapper.insert(comment);
         return 1;//代表评论成功!
+    }
+
+    @RequestMapping("/comment/select")
+    public List<Comment> select(int id){
+        return mapper.selectByWeiboId(id);
     }
 }

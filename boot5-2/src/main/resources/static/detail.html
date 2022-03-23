@@ -16,6 +16,10 @@
                placeholder="评论点儿啥....">
         <input type="button" value="评论" @click="send()">
     </form>
+    <hr>
+    <div v-for="c in cArr">
+        <p>{{c.nick}}评论说:{{c.content}}</p>
+    </div>
 </div>
 <script src="js/vue.min.js"></script>
 <script src="js/axios.min.js"></script>
@@ -23,6 +27,7 @@
     let v = new Vue({
         el:"body>div",
         data:{
+            cArr:[],
             weibo:{},
             comment:{
                 content:"",
@@ -38,6 +43,11 @@
                 //通过逗号将多个图片路径变成数组
                 v.weibo.urlArr = v.weibo.urls==""?[]:v.weibo.urls.split(",");
             })
+            //发请求获取所有评论信息
+            axios.get("/comment/select?id="+id).then(function (response) {
+                v.cArr = response.data;
+            })
+
         },
         methods:{
             send(){
