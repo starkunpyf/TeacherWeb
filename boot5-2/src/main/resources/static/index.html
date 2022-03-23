@@ -16,6 +16,10 @@
         <a href="">注册</a>
         <a href="/login.html">登录</a>
     </div>
+    <hr>
+    <div v-for="weibo in weiboArr">
+        <h3>{{weibo.nick}}说:{{weibo.content}}</h3>
+    </div>
 </div>
 <script src="js/vue.min.js"></script>
 <script src="js/axios.min.js"></script>
@@ -24,7 +28,8 @@
         el:"body>div",
         data:{
             isLogin:false,
-            user:{}
+            user:{},
+            weiboArr:[]
         },
         created:function () {
             //发请求获取当前登录的用户对象,如果有用户对象则代表登录过反之就是未登录过
@@ -33,6 +38,10 @@
                 v.user = response.data;
                 //此时如果response.data的值是空字符串 代表未登录过
                 v.isLogin = response.data==""?false:true;
+            })
+            //发请求获取所有微博数据
+            axios.get("/select").then(function (response) {
+                v.weiboArr = response.data;
             })
         },
         methods:{
