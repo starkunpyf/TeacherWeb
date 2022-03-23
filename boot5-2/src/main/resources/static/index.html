@@ -8,6 +8,7 @@
 <h1>首页</h1>
 <div>
     <div v-if="isLogin"><!--如果isLogin是true则显示div里面的内容-->
+        <h3>欢迎{{user.nick}}回来!</h3>
         <a href="/send.html">发布微博</a>
         <a href="javascript:void(0)" @click="logout()">退出登录</a>
     </div>
@@ -22,11 +23,14 @@
     let v = new Vue({
         el:"body>div",
         data:{
-            isLogin:false
+            isLogin:false,
+            user:{}
         },
         created:function () {
             //发请求获取当前登录的用户对象,如果有用户对象则代表登录过反之就是未登录过
             axios.get("/currentUser").then(function (response) {
+                //把当前登录的用户对象赋值给user
+                v.user = response.data;
                 //此时如果response.data的值是空字符串 代表未登录过
                 v.isLogin = response.data==""?false:true;
             })
