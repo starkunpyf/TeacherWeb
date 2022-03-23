@@ -46,4 +46,14 @@ public class WeiboController {
         return mapper.selectById(id);
     }
 
+    @RequestMapping("/selectSelf")
+    public List<Weibo> selectSelf(HttpSession session){
+        User u = (User) session.getAttribute("user");
+        if (u==null){
+            return null;
+        }
+        //通过当前登录用户的id查询相关的微博信息
+        return mapper.selectByUserId(u.getId());
+    }
+
 }

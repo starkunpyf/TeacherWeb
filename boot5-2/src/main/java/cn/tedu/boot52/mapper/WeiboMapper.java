@@ -19,4 +19,6 @@ public interface WeiboMapper {
     @Select("select * from weibo where id=#{id}")
     Weibo selectById(int id);
 
+    @Select("select * from weibo where user_id=#{id}")
+    List<Weibo> selectByUserId(Integer id);
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>我的微博列表</h1>
+    <div v-for="w in arr">
+        <h3>{{w.content}}</h3>
+        <div>
+            发布于:{{w.created}}
+            <a href="javascript:void(0)" @click="del(w.id)">删除</a>
+        </div>
+    </div>
+</div>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"body>div",
+        data:{
+            arr:[]
+        },
+        created:function () {
+            //查询当前登录用户发布的所有微博
+            axios.get("/selectSelf").then(function (response) {
+                v.arr = response.data;
+            })
+        }
+    })
+</script>
+</body>
+</html>
