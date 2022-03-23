@@ -27,6 +27,8 @@ public class UserController {
                     //创建Cookie记住用户名和密码
                     Cookie c1 = new Cookie("username",user.getUsername());
                     Cookie c2 = new Cookie("password",user.getPassword());
+                    //设置Cookie保存数据的时长
+                    c1.setMaxAge(60*60*24*30);
                     //把cookie下发给客户端
                     response.addCookie(c1);
                     response.addCookie(c2);

@@ -25,9 +25,9 @@
         <module name="boot2-2" />
         <module name="jdbc03" />
         <module name="boot4-222" />
-        <module name="boot5-3" />
-        <module name="boot5-0" />
         <module name="boot5-1" />
+        <module name="boot5-0" />
+        <module name="boot5-3" />
       </profile>
     </annotationProcessing>
   </component>
