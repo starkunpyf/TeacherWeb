@@ -18,7 +18,11 @@
     </div>
     <hr>
     <div v-for="weibo in weiboArr">
-        <h3>{{weibo.nick}}说:{{weibo.content}}</h3>
+        <h3>
+            <a :href="'/detail.html?id='+weibo.id">
+            {{weibo.nick}}说:{{weibo.content}}
+            </a>
+        </h3>
         <div>发布于:{{weibo.created}}</div>
         <img v-for="url in weibo.urlArr" :src="url"
              style="width: 100px;height: 100px" alt="">
