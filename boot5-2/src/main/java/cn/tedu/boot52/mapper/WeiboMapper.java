@@ -13,6 +13,6 @@ public interface WeiboMapper {
             "#{nick},#{created},#{userId})")
     void insert(Weibo weibo);
 
-    @Select("select * from weibo")
+    @Select("select * from weibo order by created desc")
     List<Weibo> select();
 }

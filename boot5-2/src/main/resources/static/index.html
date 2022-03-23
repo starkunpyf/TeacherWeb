@@ -19,6 +19,10 @@
     <hr>
     <div v-for="weibo in weiboArr">
         <h3>{{weibo.nick}}说:{{weibo.content}}</h3>
+        <div>发布于:{{weibo.created}}</div>
+        <img v-for="url in weibo.urlArr" :src="url"
+             style="width: 100px;height: 100px" alt="">
+        <hr>
     </div>
 </div>
 <script src="js/vue.min.js"></script>
@@ -42,6 +46,11 @@
             //发请求获取所有微博数据
             axios.get("/select").then(function (response) {
                 v.weiboArr = response.data;
+                //遍历所有微博对象
+                for (let weibo of v.weiboArr) {
+                    //通过逗号将多个图片路径变成数组
+                    weibo.urlArr = weibo.urls==""?[]:weibo.urls.split(",");
+                }
             })
         },
         methods:{
