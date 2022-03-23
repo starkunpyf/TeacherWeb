@@ -76,7 +76,7 @@
         //发请求 发布微博
         axios.post("/insert",v.weibo).then(function (response) {
             alert("发布微博成功!");
-            location.reload();//刷新页面
+            location.href="/";//回到首页
         })
       }
     }
