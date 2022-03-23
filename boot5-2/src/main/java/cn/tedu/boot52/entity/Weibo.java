@@ -1,5 +1,7 @@
 package cn.tedu.boot52.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Weibo {
@@ -7,6 +9,7 @@ public class Weibo {
     private String content;
     private String urls;
     private String nick;
+    @JsonFormat(pattern = "yyyy年MM月dd日 HH:mm:ss", timezone = "GMT+8")
     private Date created;//发布时间 导包 java.util
     private Integer userId;  //user_id
 
