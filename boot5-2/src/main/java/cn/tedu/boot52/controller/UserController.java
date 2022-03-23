@@ -50,4 +50,9 @@ public class UserController {
         //获取登录成功时保存的用户对象
         return (User) session.getAttribute("user");
     }
+    @RequestMapping("/logout")
+    public void logout(HttpSession session){
+        //删除登录成功时保存的用户对象
+        session.removeAttribute("user");
+    }
 }
