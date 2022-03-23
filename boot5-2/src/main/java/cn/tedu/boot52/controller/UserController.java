@@ -45,4 +45,9 @@ public class UserController {
         }
         return 2;
     }
+    @RequestMapping("/currentUser")
+    public User currentUser(HttpSession session){
+        //获取登录成功时保存的用户对象
+        return (User) session.getAttribute("user");
+    }
 }

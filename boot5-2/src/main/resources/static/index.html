@@ -23,6 +23,13 @@
         el:"body>div",
         data:{
             isLogin:false
+        },
+        created:function () {
+            //发请求获取当前登录的用户对象,如果有用户对象则代表登录过反之就是未登录过
+            axios.get("/currentUser").then(function (response) {
+                //此时如果response.data的值是空字符串 代表未登录过
+                v.isLogin = response.data==""?false:true;
+            })
         }
     })
 </script>
