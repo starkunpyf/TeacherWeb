@@ -38,7 +38,7 @@
   background-color: rgba(255,255,255,0.3)">
     <el-form style="width: 400px;margin: 30px auto" label-width="60px">
       <el-form-item label="用户名">
-        <el-input type="username" v-model="user.username"
+        <el-input type="text" v-model="user.username"
                   placeholder="请输入用户名"></el-input>
       </el-form-item>
       <el-form-item label="密码">
@@ -57,7 +57,7 @@
 <script src="js/eui.js"></script>
 <script src="js/axios.min.js"></script>
 <script>
-  new Vue({
+  let v = new Vue({
     el: '#app',
     data: function() {
       return {
@@ -65,6 +65,19 @@
           username:"",
           password:""
         }
+      }
+    },
+    methods:{
+      login(){
+        axios.post("/login",v.user).then(function (response) {
+            if (response.data==1){
+              location.href="/";//跳转到首页
+            }else if(response.data==2){
+              alert("用户名不存在!");
+            }else{
+              alert("密码错误!");
+            }
+        })
       }
     }
   })
