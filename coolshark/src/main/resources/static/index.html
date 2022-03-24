@@ -168,12 +168,20 @@
           {title:"imone2021秋款黑色小西装外套女韩版学生宽松学院风外套jk外套",price:233,oldPrice:598,url:"imgs/i.jpg",saleCount:2342},
           {title:"BEASTER 小恶魔明星同款保暖长袖街头潮流连帽卫衣情侣上衣",price:233,oldPrice:598,url:"imgs/j.jpg",saleCount:2342},
           {title:"憨厚皇后100%绵羊皮2021秋海宁真皮皮衣女长款修身绵羊皮风衣外",price:233,oldPrice:598,url:"imgs/k.jpg",saleCount:2342},
-          {title:"美特斯邦威高腰牛仔裤女宽松小脚新款春秋彩色潮流女士牛仔",price:233,oldPrice:598,url:"imgs/a.jpg",saleCount:2342}]
+          {title:"美特斯邦威高腰牛仔裤女宽松小脚新款春秋彩色潮流女士牛仔",price:233,oldPrice:598,url:"imgs/a.jpg",saleCount:2342}
+          ],
+        categoryArr:[]
       }
     },methods:{
       handleSelect(){
 
       }
+    },
+    created:function () {
+      //发请求获取所有的分类信息
+      axios.get("/category/select").then(function (response) {
+
+      })
     }
   })
 </script>
