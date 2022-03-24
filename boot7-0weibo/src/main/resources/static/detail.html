@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>{{weibo.nick}}说:{{weibo.content}}</h1>
+    <img v-for="url in weibo.urlArr" :src="url" style="width: 300px">
+    <div>发布于:{{weibo.created}}</div>
+    <hr>
+    <h2>评论相关</h2>
+
+    <div v-for="c in cArr">
+        <p>{{c.nick}}评论说:{{c.content}}</p>
+    </div>
+
+    <form action="">
+        <input type="text" name="content" v-model="comment.content"
+               placeholder="评论点儿啥....">
+        <input type="button" value="评论" @click="send()">
+    </form>
+</div>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"body>div",
+        data:{
+            comment:{},
+            weibo:{},
+            cArr:[]
+        },
+        created:function () {
+            //得到地址栏里面的id
+            let id = location.search.split("=")[1];
+            //通过id查询微博详情
+            axios.get("/selectById?id="+id).then(function (response) {
+                v.weibo = response.data;
+                //通过逗号将多个图片路径变成数组
+                v.weibo.urlArr = v.weibo.urls==""?[]:v.weibo.urls.split(",");
+            })
+            //发请求获取所有评论信息
+            axios.get("/comment/select?id="+id).then(function (response) {
+                v.cArr = response.data;
+            })
+        },
+        methods:{
+            send(){
+                //把当前微博的id添加到comment对象中 传递过去
+                v.comment.weiboId = v.weibo.id;
+                axios.post("/comment/insert",v.comment).then(function (response) {
+                    if (response.data==1){
+                        alert("评论成功!");
+                        location.reload();//刷新页面
+                    }else{
+                        alert("请先登录!");
+                        location.href="/login.html";
+                    }
+                })
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

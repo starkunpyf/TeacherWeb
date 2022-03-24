@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>登录页面</h1>
+<form action="">
+    <input type="text" name="username" v-model="user.username" placeholder="用户名"><br>
+    <input type="password" name="password" v-model="user.password" placeholder="密码"><br>
+    <input type="checkbox" name="rem" v-model="user.rem">记住用户名和密码<br>
+    <input type="button" value="登录" @click="login()">
+</form>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"form",
+        data:{
+            user:{
+                username:"",
+                password:"",
+                rem:""
+            }
+        },
+        methods:{
+            login(){
+                axios.post("/login",v.user).then(function (response) {
+                    if (response.data==1){
+                        alert("登录成功!");
+                        location.href="/";
+                    }else if(response.data==2){
+                        alert("用户名不存在!");
+                    }else{
+                        alert("密码错误!");
+                    }
+                })
+            }
+        }
+    })
+    //获取cookie里面的数据
+    let cookieStr = document.cookie;
+    //'username=tom; password=123456'
+    let cookieArr = cookieStr.split(";");
+    for (let cookie of cookieArr) {
+        let arr = cookie.split("=")
+        let name = arr[0].trim();  // trim()去掉空格
+        let value = arr[1];
+        if (name=="username"){
+            v.user.username = value;
+        }else if (name=="password"){
+            v.user.password = value;
+        }
+    }
+
+</script>
+</body>
+</html>

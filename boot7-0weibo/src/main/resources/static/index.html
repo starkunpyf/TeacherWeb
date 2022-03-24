@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div v-if="isLogin"><!--如果isLogin是true则显示div里面的内容-->
+        <h3>欢迎{{user.nick}}回来!</h3>
+        <a href="/send.html">发布微博</a>
+        <a href="/self.html">我的微博</a>
+        <a href="javascript:void(0)" @click="logout()">退出登录</a>
+    </div>
+    <div v-else> <!--和上面显示状态相反-->
+        <a href="">注册</a>
+        <a href="/login.html">登录</a>
+    </div>
+    <hr>
+    <div v-for="weibo in weiboArr">
+        <h3>
+            <a :href="'/detail.html?id='+weibo.id">
+                {{weibo.nick}}说:{{weibo.content}}
+            </a>
+        </h3>
+        <div>发布于:{{weibo.created}}</div>
+        <img v-for="url in weibo.urlArr" :src="url"
+             style="width: 100px;height: 100px" alt="">
+        <hr>
+    </div>
+</div>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"body>div",
+        data:{
+            isLogin:false,
+            user:{},
+            weiboArr:[]
+        },
+        created:function () {
+            //发请求获取当前登录的用户对象,如果有用户对象则代表登录过反之就是未登录过
+            axios.get("/currentUser").then(function (response) {
+                //把当前登录的用户对象赋值给user
+                v.user = response.data;
+                //此时如果response.data的值是空字符串 代表未登录过
+                v.isLogin = response.data==""?false:true;
+            })
+            //发请求获取所有微博数据
+            axios.get("/select").then(function (response) {
+                v.weiboArr = response.data;
+                //遍历所有微博对象
+                for (let weibo of v.weiboArr) {
+                    //通过逗号将多个图片路径变成数组
+                    weibo.urlArr = weibo.urls==""?[]:weibo.urls.split(",");
+                }
+            })
+        },
+        methods:{
+            logout(){
+                if (confirm("您确认退出登录吗?")){
+                    //发出退出登录请求
+                    axios.get("/logout").then(function (response) {
+                        v.isLogin=false;//修改这个变量 页面会自动跟着改变
+                    })
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
