@@ -55,12 +55,16 @@
       </el-aside>
 
       <el-main>
-        <el-table :data="tableData">
-          <el-table-column prop="date" label="日期" width="140">
+        <el-table v-show="index=='1-1'" :data="tableData">
+          <el-table-column prop="date" label="分类" width="140">
           </el-table-column>
-          <el-table-column prop="name" label="姓名" width="120">
+        </el-table>
+        <el-table v-show="index=='2-1'" :data="tableData">
+          <el-table-column prop="date" label="轮播图" width="140">
           </el-table-column>
-          <el-table-column prop="address" label="地址">
+        </el-table>
+        <el-table v-show="index=='3-1'" :data="tableData">
+          <el-table-column prop="date" label="商品" width="140">
           </el-table-column>
         </el-table>
       </el-main>
@@ -73,7 +77,7 @@
 <!-- import JavaScript -->
 <script src="js/eui.js"></script>
 <script>
-  new Vue({
+  let v = new Vue({
     el: '#app',
     data() {
       const item = {
@@ -82,7 +86,8 @@
         address: '上海市普陀区金沙江路 1518 弄'
       };
       return {
-        tableData: Array(20).fill(item)
+        tableData: Array(20).fill(item),
+        index:"1-1"
       }
     },
     methods:{
@@ -95,6 +100,7 @@
           alert("点击了添加商品");
         }else{
           alert("点击了列表")
+          v.index = index;
         }
       }
     }
