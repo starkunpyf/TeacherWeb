@@ -108,12 +108,17 @@
       }
     },
     created:function(){
-        //发请求获取所有分类数据
-      axios.get("/category/select").then(function (response) {
-        v.categoryArr = response.data;
-      })
+        //发请求获取所有分类数据  this代表当前Vue对象
+      //此处的this不能用v代替  created方法执行时 v还没有赋值
+        this.loadCategory();
+        //created方法中只能用this   axios发请求后只能用v
     },
     methods:{
+      loadCategory(){
+        axios.get("/category/select").then(function (response) {
+          v.categoryArr = response.data;
+        })
+      },
       menuChange(index){
         if (index=="1-2"){
           alert("点击了添加分类");
@@ -129,8 +134,9 @@
       categoryDelete(index,category){
         //发请求删除分类
         axios.get("/category/delete?id="+category.id).then(function (response) {
-          //重新加载分类数据
-          location.reload();
+          //重新加载分类数据 因为此处开了子线程删除分类,当此处代码执行时
+          //this 已经不是Vue对象了  只能使用v访问方法
+          v.loadCategory();
         })
       }
     }
