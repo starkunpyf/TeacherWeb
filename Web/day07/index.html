@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <!-- import CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="css/eui.css">
   <style>
     body{
       font: 18px "Microsoft YaHei UI";
@@ -69,10 +69,10 @@
         <el-menu-item index="5">医药健康</el-menu-item>
         <el-menu-item index="6">美妆彩妆</el-menu-item>
         <el-menu-item index="7">母婴产品</el-menu-item>
-        <el-menu-item>
+        <el-menu-item style="float: right">
           <el-input size="mini" v-model="wd" placeholder="请输入关键字搜索"></el-input>
         </el-menu-item>
-        <el-button style="background-color: rgba(0,0,0,0);border:none;position: relative;top: 15px;right: 70px"
+        <el-button style="float: right;background-color: rgba(0,0,0,0);border:none;position: relative;top: 15px;left: 220px"
                    icon="el-icon-search"></el-button>
       </el-menu>
     </div>
@@ -83,7 +83,7 @@
       <el-col :span="18">
         <!--走马灯开始-->
         <el-carousel trigger="click" height="300px">
-          <el-carousel-item v-for="item in arr" :key="item">
+          <el-carousel-item v-for="item in bannerArr" :key="item">
             <img :src="item" style="width: 100%;height: 100%" alt="">
           </el-carousel-item>
         </el-carousel>
@@ -94,13 +94,13 @@
           <h3><i style="font-weight: bold" class="el-icon-trophy"></i>销量最高</h3>
           <el-divider></el-divider>
           <!--销量排行榜开始-->
-          <el-table :data="itemArr" style="width: 500px">
+          <el-table :data="topArr" style="width: 500px">
             <!--type="index" 列的内容为序号-->
             <el-table-column type="index" label="排名">
             </el-table-column>
-            <el-table-column prop="name" label="商品名">
+            <el-table-column prop="title" label="商品名">
             </el-table-column>
-            <el-table-column prop="count" label="销量">
+            <el-table-column prop="saleCount" label="销量">
             </el-table-column>
           </el-table>
           <!--销量排行榜结束-->
@@ -109,17 +109,17 @@
     </el-row>
     <!--商品列表开始-->
       <el-row :gutter="20">
-        <el-col :span="6" v-for="i in mainArr">
+        <el-col :span="6" v-for="p in productArr">
           <el-card :body-style="{ padding: '0px' }">
             <div class="item_div" style="padding: 20px 20px 0 20px">
-              <img :src="i.url" width="100%" class="image">
+              <img :src="p.url" width="100%" class="image">
             </div>
             <div style="padding: 14px;">
-              <p style="margin-top: 0;font-size: 15px;height: 38px">{{i.name}}</p>
+              <p style="margin-top: 0;font-size: 15px;height: 38px">{{p.title}}</p>
               <div class="bottom clearfix" style="color: #6c6c6c">
-                <span>￥{{i.price}}
-                  <small style="text-decoration: line-through">￥{{i.oldPrice}}</small></span>
-                <span style="float: right">销量:{{i.count}}件</span>
+                <span>￥{{p.price}}
+                  <small style="text-decoration: line-through">￥{{p.oldPrice}}</small></span>
+                <span style="float: right">销量:{{p.saleCount}}件</span>
               </div>
             </div>
           </el-card>
@@ -150,25 +150,25 @@
     data: function() {
       return {
         wd:"",
-        arr:["imgs/b1.jpg","imgs/b2.jpg","imgs/b3.jpg","imgs/b4.jpg"],
-        itemArr:[{name:"小米12pro",count:876543},
-          {name:"华为手表",count:76543},
-          {name:"最生活毛巾",count:6543},
-          {name:"双飞燕鼠标",count:543},
-          {name:"耐克运动服",count:43},
-          {name:"苹果手机",count:3}],
-        mainArr:[{name:"森马牛仔裤女宽松慢跑裤运动风2022春季新款显瘦束脚长裤复古",price:233,oldPrice:598,url:"imgs/a.jpg",count:2342},
-          {name:"茵曼马甲连衣裙两件套春季新款娃娃领色织格长袖背心裙套装",price:233,oldPrice:598,url:"imgs/b.jpg",count:2342},
-          {name:"雪中飞墨绿色短袖t恤女夏2022新款纯棉半袖打底体恤夏季上衣潮ins",price:233,oldPrice:598,url:"imgs/c.jpg",count:2342},
-          {name:"【佟丽娅同款】鸭鸭明星同款羽绒服2021年冬季新款时尚连帽外套冬",price:233,oldPrice:598,url:"imgs/d.jpg",count:2342},
-          {name:"BEASTER小恶魔鬼脸明星同款夹克毛绒保暖加厚字母印花宽松外套ins",price:233,oldPrice:598,url:"imgs/e.jpg",count:2342},
-          {name:"香影毛呢外套女中长款2021年冬季新款气质韩版娃娃领紫色呢子大衣",price:233,oldPrice:598,url:"imgs/f.jpg",count:2342},
-          {name:"SEMIR森马商场同款打底针织毛衣纯色高领新品显瘦",price:233,oldPrice:598,url:"imgs/g.jpg",count:2342},
-          {name:"美特斯邦威女MTEE 贺岁系列中长款风衣736598",price:233,oldPrice:598,url:"imgs/h.jpg",count:2342},
-          {name:"imone2021秋款黑色小西装外套女韩版学生宽松学院风外套jk外套",price:233,oldPrice:598,url:"imgs/i.jpg",count:2342},
-          {name:"BEASTER 小恶魔明星同款保暖长袖街头潮流连帽卫衣情侣上衣",price:233,oldPrice:598,url:"imgs/j.jpg",count:2342},
-          {name:"憨厚皇后100%绵羊皮2021秋海宁真皮皮衣女长款修身绵羊皮风衣外",price:233,oldPrice:598,url:"imgs/k.jpg",count:2342},
-          {name:"美特斯邦威高腰牛仔裤女宽松小脚新款春秋彩色潮流女士牛仔",price:233,oldPrice:598,url:"imgs/a.jpg",count:2342}]
+        bannerArr:["imgs/b1.jpg","imgs/b2.jpg","imgs/b3.jpg","imgs/b4.jpg"],
+        topArr:[{title:"小米12pro",saleCount:876543},
+          {title:"华为手表",saleCount:76543},
+          {title:"最生活毛巾",saleCount:6543},
+          {title:"双飞燕鼠标",saleCount:543},
+          {title:"耐克运动服",saleCount:43},
+          {title:"苹果手机",saleCount:3}],
+        productArr:[{title:"森马牛仔裤女宽松慢跑裤运动风2022春季新款显瘦束脚长裤复古",price:233,oldPrice:598,url:"imgs/a.jpg",saleCount:2342},
+          {title:"茵曼马甲连衣裙两件套春季新款娃娃领色织格长袖背心裙套装",price:233,oldPrice:598,url:"imgs/b.jpg",saleCount:2342},
+          {title:"雪中飞墨绿色短袖t恤女夏2022新款纯棉半袖打底体恤夏季上衣潮ins",price:233,oldPrice:598,url:"imgs/c.jpg",saleCount:2342},
+          {title:"【佟丽娅同款】鸭鸭明星同款羽绒服2021年冬季新款时尚连帽外套冬",price:233,oldPrice:598,url:"imgs/d.jpg",saleCount:2342},
+          {title:"BEASTER小恶魔鬼脸明星同款夹克毛绒保暖加厚字母印花宽松外套ins",price:233,oldPrice:598,url:"imgs/e.jpg",saleCount:2342},
+          {title:"香影毛呢外套女中长款2021年冬季新款气质韩版娃娃领紫色呢子大衣",price:233,oldPrice:598,url:"imgs/f.jpg",saleCount:2342},
+          {title:"SEMIR森马商场同款打底针织毛衣纯色高领新品显瘦",price:233,oldPrice:598,url:"imgs/g.jpg",saleCount:2342},
+          {title:"美特斯邦威女MTEE 贺岁系列中长款风衣736598",price:233,oldPrice:598,url:"imgs/h.jpg",saleCount:2342},
+          {title:"imone2021秋款黑色小西装外套女韩版学生宽松学院风外套jk外套",price:233,oldPrice:598,url:"imgs/i.jpg",saleCount:2342},
+          {title:"BEASTER 小恶魔明星同款保暖长袖街头潮流连帽卫衣情侣上衣",price:233,oldPrice:598,url:"imgs/j.jpg",saleCount:2342},
+          {title:"憨厚皇后100%绵羊皮2021秋海宁真皮皮衣女长款修身绵羊皮风衣外",price:233,oldPrice:598,url:"imgs/k.jpg",saleCount:2342},
+          {title:"美特斯邦威高腰牛仔裤女宽松小脚新款春秋彩色潮流女士牛仔",price:233,oldPrice:598,url:"imgs/a.jpg",saleCount:2342}]
       }
     },methods:{
       handleSelect(){
