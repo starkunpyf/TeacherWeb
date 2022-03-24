@@ -62,13 +62,7 @@
               background-color="#82c8ec"
               text-color="#fff"
               active-text-color="#fff">
-        <el-menu-item index="1">精彩活动</el-menu-item>
-        <el-menu-item index="2">当季女装</el-menu-item>
-        <el-menu-item index="3">品牌男装</el-menu-item>
-        <el-menu-item index="4">环球美食</el-menu-item>
-        <el-menu-item index="5">医药健康</el-menu-item>
-        <el-menu-item index="6">美妆彩妆</el-menu-item>
-        <el-menu-item index="7">母婴产品</el-menu-item>
+        <el-menu-item v-for="c in categoryArr" index="1">{{c.name}}</el-menu-item>
         <el-menu-item style="float: right">
           <el-input size="mini" v-model="wd" placeholder="请输入关键字搜索"></el-input>
         </el-menu-item>
@@ -144,8 +138,9 @@
 <script src="js/vue.min.js"></script>
 <!-- import JavaScript -->
 <script src="js/eui.js"></script>
+<script src="js/axios.min.js"></script>
 <script>
-  new Vue({
+  let v = new Vue({
     el: '#app',
     data: function() {
       return {
@@ -180,7 +175,7 @@
     created:function () {
       //发请求获取所有的分类信息
       axios.get("/category/select").then(function (response) {
-
+          v.categoryArr = response.data;
       })
     }
   })
