@@ -34,7 +34,7 @@
 
     <el-container>
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :default-openeds="['1']">
+        <el-menu :default-openeds="['1']" @select="menuChange">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-s-flag"></i>分类管理</template>
             <el-menu-item index="1-1">分类列表</el-menu-item>
@@ -83,6 +83,19 @@
       };
       return {
         tableData: Array(20).fill(item)
+      }
+    },
+    methods:{
+      menuChange(index){
+        if (index=="1-2"){
+          alert("点击了添加分类");
+        }else if(index=="2-2"){
+          alert("点击了添加轮播图");
+        }else if(index=="3-2"){
+          alert("点击了添加商品");
+        }else{
+          alert("点击了列表")
+        }
       }
     }
   })
