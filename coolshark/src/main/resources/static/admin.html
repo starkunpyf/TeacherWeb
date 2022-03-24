@@ -125,6 +125,13 @@
           alert("点击了列表")
           v.index = index;
         }
+      },
+      categoryDelete(index,category){
+        //发请求删除分类
+        axios.get("/category/delete?id="+category.id).then(function (response) {
+          //重新加载分类数据
+          location.reload();
+        })
       }
     }
   })
