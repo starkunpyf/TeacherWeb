@@ -131,13 +131,9 @@
   let v = new Vue({
     el: '#app',
     data() {
-      const item = {
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      };
+
       return {
-        tableData: Array(20).fill(item),
+        productArr:[],
         index:"1-1",
         categoryArr:[],
         drawer:false,
@@ -161,8 +157,15 @@
         //created方法中只能用this   axios发请求后只能用v
       //发请求获取所有的轮播图数据
       this.loadBanner();
+      //发请求获取所有商品信息
+      this.loadProduct();
     },
     methods:{
+      loadProduct(){
+        axios.get("/product/select/admin").then(function (response) {
+          v.productArr = response.data;
+        })
+      },
       loadBanner(){
         axios.get("/banner/select").then(function (response) {
           v.bannerArr = response.data;
