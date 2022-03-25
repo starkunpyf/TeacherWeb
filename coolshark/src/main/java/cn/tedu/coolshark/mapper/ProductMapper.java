@@ -1,10 +1,7 @@
 package cn.tedu.coolshark.mapper;
 
 import cn.tedu.coolshark.entity.Product;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -19,4 +16,11 @@ public interface ProductMapper {
     @Result(column = "sale_count",property = "saleCount")
     @Result(column = "view_count",property = "viewCount")
     List<Product> selectAdmin();
+
+    @Select("select url from product where id=#{id}")
+    String selectUrlById(int id);
+
+    @Delete("delete from product where id=#{id}")
+    void deleteById(int id);
+
 }

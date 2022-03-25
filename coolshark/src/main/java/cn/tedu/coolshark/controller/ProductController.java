@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -26,4 +27,14 @@ public class ProductController {
     public List<Product> selectAdmin(){
         return mapper.selectAdmin();
     }
+    @RequestMapping("/product/delete")
+    public void delete(int id){
+        //得到文件路径并删除商品文件
+        String url = mapper.selectUrlById(id);
+        String filePath = "D:/file"+url;
+        new File(filePath).delete();
+
+        mapper.deleteById(id);
+    }
+
 }
