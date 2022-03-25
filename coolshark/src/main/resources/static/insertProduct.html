@@ -54,7 +54,7 @@
         <!--选择图片组件结束-->
       </el-form-item>
       <el-form-item>
-        <el-button @click="send">发布商品</el-button>
+        <el-button @click="send" type="success">发布商品</el-button>
       </el-form-item>
 
     </el-form>
@@ -106,8 +106,13 @@
           v.$message.error("请选择上传的图片!");
           return;
         }
-
-
+        //把图片路径添加到product对象中
+        v.product.url = v.url;
+        //发请求并把所有商品相关数据提交
+        axios.post("/product/insert",v.product).then(function () {
+          //发布完成后跳转回管理页面 传参3-1是为了让管理页面直接显示商品列表
+            location.href="/admin.html?index=3-1";
+        })
       },
       goBack(){
         history.back();//返回上一页面
