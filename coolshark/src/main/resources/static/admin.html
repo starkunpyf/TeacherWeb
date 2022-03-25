@@ -131,8 +131,15 @@
       //此处的this不能用v代替  created方法执行时 v还没有赋值
         this.loadCategory();
         //created方法中只能用this   axios发请求后只能用v
+      //发请求获取所有的轮播图数据
+      this.loadBanner();
     },
     methods:{
+      loadBanner(){
+        axios.get("/banner/select").then(function (response) {
+          v.bannerArr = response.data;
+        })
+      },
       addCategory(){//添加分类
         //发出添加分类的请求
         axios.get("/category/insert?name="+v.categoryName).then(function () {
