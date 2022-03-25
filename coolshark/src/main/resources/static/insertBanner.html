@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="css/eui.css">
+</head>
+<body>
+<div id="app">
+  <el-page-header style="background-color: #0095d7;
+  color: white;height: 60px;line-height: 60px;font-weight: bold" @back="goBack" content="添加轮播图页面">
+  </el-page-header>
+
+</div>
+</body>
+<script src="js/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="js/eui.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: function() {
+      return {
+
+      }
+    },
+    methods:{
+      goBack(){
+        //返回上一页面
+        history.back();
+      }
+    }
+  })
+</script>
+</html>
