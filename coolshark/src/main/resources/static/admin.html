@@ -88,13 +88,19 @@
 <!--抽屉组件开始
   direction:代表方向rtl(从右到左right to left) / ltr (左到右)/ ttb (上到下)/ btt(下到上)
   size:弹出内容占屏幕的百分比
+  :visible.sync 让抽屉是否显示和一个变量进行绑定 true显示 false不显示
 -->
   <el-drawer
           title="添加分类"
           :visible.sync="drawer"
           direction="ttb"
           size="25%">
-    <span>我来啦!</span>
+    <el-form>
+      <el-form-item label="分类名称" label-width="80px">
+          <el-input style="width: 500px" v-model="categoryName"></el-input>
+          <el-button type="success" @click="addCategory">添加</el-button>
+      </el-form-item>
+    </el-form>
   </el-drawer>
   <!--抽屉组件结束-->
 </div>
@@ -115,7 +121,9 @@
       return {
         tableData: Array(20).fill(item),
         index:"1-1",
-        categoryArr:[]
+        categoryArr:[],
+        drawer:false,
+        categoryName:""
       }
     },
     created:function(){
@@ -125,6 +133,13 @@
         //created方法中只能用this   axios发请求后只能用v
     },
     methods:{
+      addCategory(){//添加分类
+        //发出添加分类的请求
+        axios.get("/category/insert?name="+v.categoryName).then(function () {
+            v.drawer=false; //让抽屉收回
+            v.loadCategory();//重新加载分类信息
+        })
+      },
       loadCategory(){
         axios.get("/category/select").then(function (response) {
           v.categoryArr = response.data;
@@ -132,7 +147,7 @@
       },
       menuChange(index){
         if (index=="1-2"){
-          alert("点击了添加分类");
+          v.drawer=true;
         }else if(index=="2-2"){
           alert("点击了添加轮播图");
         }else if(index=="3-2"){
