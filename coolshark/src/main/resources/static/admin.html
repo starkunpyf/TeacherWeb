@@ -34,7 +34,7 @@
 
     <el-container>
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :default-openeds="['1']" @select="menuChange">
+        <el-menu :default-openeds="[openIndex]" @select="menuChange">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-s-flag"></i>分类管理</template>
             <el-menu-item index="1-1">分类列表</el-menu-item>
@@ -142,13 +142,17 @@
         categoryArr:[],
         drawer:false,
         categoryName:"",
-        bannerArr:[]
+        bannerArr:[],
+        openIndex:"1"
       }
     },
     created:function(){
-      //得到地址栏中的参数 判断地址栏中是否包含index参数
+      //得到地址栏中的参数 判断地址栏中是否包含index参数   2-1
       if (location.search.indexOf('index')!=-1){
+        //从地址栏中的?index=2-1 取出2-1
         this.index = location.search.split("=")[1];
+        //取出2-1里面的 2
+        this.openIndex = this.index.split("-")[0];
       }
 
         //发请求获取所有分类数据  this代表当前Vue对象
