@@ -30,7 +30,12 @@
       <el-form-item label="商品分类" label-width="80px">
         <template>
           <el-select v-model="product.categoryId" placeholder="请选择">
-            <el-option></el-option>
+            <el-option
+                    v-for="c in categoryArr"
+                       :key="c.name"
+                       :value="c.id"
+                       :label="c.name"
+            ></el-option>
           </el-select>
         </template>
       </el-form-item>
@@ -82,6 +87,12 @@
         },
         categoryArr:[]
       };
+    },
+    created:function(){
+      //发请求获取所有分类信息
+      axios.get("/category/select").then(function (response) {
+        v.categoryArr = response.data;
+      })
     },
     methods: {
       handleRemove(file, fileList) {
