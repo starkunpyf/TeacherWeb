@@ -72,6 +72,10 @@
           return;
         }
         //发布轮播图请求
+        axios.get("/banner/insert?url="+v.url).then(function () {
+          //发布成功后跳转回管理页面
+          location.href="/admin.html";
+        })
 
       },
       goBack(){

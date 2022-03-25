@@ -29,4 +29,10 @@ public class BannerController {
         mapper.deleteById(id);
     }
 
+    @RequestMapping("/banner/insert")
+    public void insert(Banner banner){
+        System.out.println("banner = " + banner);
+        mapper.insert(banner);
+    }
+
 }
