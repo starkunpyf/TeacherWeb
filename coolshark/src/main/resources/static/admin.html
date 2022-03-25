@@ -96,8 +96,35 @@
             </template>
           </el-table-column>
         </el-table>
-        <el-table v-show="index=='3-1'" :data="tableData">
-          <el-table-column prop="date" label="商品" width="140">
+        <el-table v-show="index=='3-1'" :data="productArr">
+          <el-table-column type="index" label="编号" width="50"></el-table-column>
+          <el-table-column prop="title" label="商品标题" width="160">
+          </el-table-column>
+          <el-table-column prop="price" label="价格" width="50">
+          </el-table-column>
+          <el-table-column prop="viewCount" label="浏览量" width="70">
+          </el-table-column>
+          <el-table-column prop="saleCount" label="销量" width="50">
+          </el-table-column>
+          <el-table-column label="商品图片" width="150">
+            <!--template模板 scope里面装着遍历的对象-->
+            <template slot-scope="scope">
+              <!--scope.row得到当前遍历的对象-->
+              <img :src="scope.row.url" style="width: 100px" alt="">
+            </template>
+          </el-table-column>
+          <el-table-column prop="created" label="发布时间" width="100">
+          </el-table-column>
+          <el-table-column label="操作">
+            <!--scope对象中会装着当前遍历的信息-->
+            <template slot-scope="scope">
+              <!--气泡确认组件 scope.$index代表遍历对象在数组中的下标
+              scope.row代表当前遍历的分类对象-->
+              <el-popconfirm title="您确认删除此商品吗?"
+                             @confirm="productDelete(scope.$index,scope.row)">
+                <el-button size="mini" type="danger" slot="reference">删除</el-button>
+              </el-popconfirm>
+            </template>
           </el-table-column>
         </el-table>
       </el-main>
