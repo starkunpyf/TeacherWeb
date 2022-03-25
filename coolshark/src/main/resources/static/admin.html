@@ -85,7 +85,18 @@
       </el-main>
     </el-container>
   </el-container>
-
+<!--抽屉组件开始
+  direction:代表方向rtl(从右到左right to left) / ltr (左到右)/ ttb (上到下)/ btt(下到上)
+  size:弹出内容占屏幕的百分比
+-->
+  <el-drawer
+          title="添加分类"
+          :visible.sync="drawer"
+          direction="ttb"
+          size="25%">
+    <span>我来啦!</span>
+  </el-drawer>
+  <!--抽屉组件结束-->
 </div>
 </body>
 <script src="js/vue.min.js"></script>

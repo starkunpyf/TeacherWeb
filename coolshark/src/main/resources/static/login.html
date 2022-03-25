@@ -73,9 +73,9 @@
             if (response.data==1){
               location.href="/";//跳转到首页
             }else if(response.data==2){
-              alert("用户名不存在!");
+              v.$message.error("用户名不存在!");
             }else{
-              alert("密码错误!");
+              v.$message.error("密码错误!");
             }
         })
       }
