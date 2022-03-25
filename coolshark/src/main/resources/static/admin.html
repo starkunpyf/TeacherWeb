@@ -74,8 +74,26 @@
             </template>
           </el-table-column>
         </el-table>
-        <el-table v-show="index=='2-1'" :data="tableData">
-          <el-table-column prop="date" label="轮播图" width="140">
+        <el-table v-show="index=='2-1'" :data="bannerArr">
+          <el-table-column type="index" label="编号" width="140">
+          </el-table-column>
+          <el-table-column label="轮播图" width="240">
+            <!--template模板 scope里面装着遍历的对象-->
+            <template slot-scope="scope">
+              <!--scope.row得到当前遍历的对象-->
+              <img :src="scope.row.url" style="width: 150px" alt="">
+            </template>
+          </el-table-column>
+          <el-table-column label="操作">
+            <!--scope对象中会装着当前遍历的信息-->
+            <template slot-scope="scope">
+              <!--气泡确认组件 scope.$index代表遍历对象在数组中的下标
+              scope.row代表当前遍历的分类对象-->
+              <el-popconfirm title="您确认删除此轮播图吗?"
+                             @confirm="bannerDelete(scope.$index,scope.row)">
+                <el-button size="mini" type="danger" slot="reference">删除</el-button>
+              </el-popconfirm>
+            </template>
           </el-table-column>
         </el-table>
         <el-table v-show="index=='3-1'" :data="tableData">
@@ -123,7 +141,8 @@
         index:"1-1",
         categoryArr:[],
         drawer:false,
-        categoryName:""
+        categoryName:"",
+        bannerArr:[]
       }
     },
     created:function(){
