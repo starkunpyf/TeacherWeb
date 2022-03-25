@@ -20,4 +20,9 @@ public class CategoryController {
     public void delete(int id){
         mapper.deleteById(id);
     }
+
+    @RequestMapping("/category/insert")
+    public void insert(Category category){
+        mapper.insert(category);
+    }
 }
