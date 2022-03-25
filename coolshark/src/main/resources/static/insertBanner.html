@@ -22,6 +22,7 @@
             list-type="picture-card"
             :on-preview="handlePictureCardPreview"
             :on-success="handleSuccess"
+            :on-exceed="exceed"
             :on-remove="handleRemove">
       <i class="el-icon-plus"></i>
     </el-upload>
@@ -75,6 +76,9 @@
       },
       goBack(){
         history.back();//返回上一页面
+      },
+      exceed(){
+        v.$message.error("图片只能选择1个!");
       }
     }
   })
