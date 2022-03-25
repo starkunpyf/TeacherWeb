@@ -10,7 +10,7 @@ public class Product {
     private Double oldPrice;
     private Integer viewCount; //浏览量
     private Integer saleCount;
-    private Date   created;  //发布时间
+    private Date   created;  //发布时间  导包java.util
     private Integer categoryId; //商品分类id
 
     @Override
