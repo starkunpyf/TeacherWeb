@@ -179,7 +179,7 @@
         }else if(index=="3-2"){
           alert("点击了添加商品");
         }else{
-          alert("点击了列表")
+
           v.index = index;
         }
       },
@@ -189,6 +189,22 @@
           //重新加载分类数据 因为此处开了子线程删除分类,当此处代码执行时
           //this 已经不是Vue对象了  只能使用v访问方法
           v.loadCategory();
+          v.$message({
+            showClose:true,  //是否显示关闭按钮
+            message:"删除成功!",
+            type:"success"
+          })
+        })
+      },
+      bannerDelete(index,banner){
+        //发出删除轮播图请求
+        axios.get("/banner/delete?id="+banner.id).then(function () {
+            v.loadBanner();
+            v.$message({
+              showClose:true,  //是否显示关闭按钮
+              message:"删除成功!",
+              type:"success"
+            })
         })
       }
     }

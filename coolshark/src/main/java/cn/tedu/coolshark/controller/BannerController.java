@@ -16,5 +16,9 @@ public class BannerController {
     public List<Banner>select(){
         return mapper.select();
     }
+    @RequestMapping("/banner/delete")
+    public void delete(int id){
+        mapper.deleteById(id);
+    }
 
 }
