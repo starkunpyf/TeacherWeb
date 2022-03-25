@@ -200,11 +200,7 @@
         //发出删除轮播图请求
         axios.get("/banner/delete?id="+banner.id).then(function () {
             v.loadBanner();
-            v.$message({
-              showClose:true,  //是否显示关闭按钮
-              message:"删除成功!",
-              type:"success"
-            })
+            v.$message.success("删除轮播图完成!");
         })
       }
     }

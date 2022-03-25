@@ -19,4 +19,6 @@ public interface BannerMapper {
     @Delete("delete from banner where id=#{id}")
     void deleteById(int id);
 
+    @Select("select url from banner where id=#{id}")
+    String selectUrlById(int id);
 }
