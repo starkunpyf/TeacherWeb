@@ -146,6 +146,11 @@
       }
     },
     created:function(){
+      //得到地址栏中的参数 判断地址栏中是否包含index参数
+      if (location.search.indexOf('index')!=-1){
+        this.index = location.search.split("=")[1];
+      }
+
         //发请求获取所有分类数据  this代表当前Vue对象
       //此处的this不能用v代替  created方法执行时 v还没有赋值
         this.loadCategory();
