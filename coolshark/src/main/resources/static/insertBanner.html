@@ -14,7 +14,9 @@
   <el-divider></el-divider>
   <el-card>
     <!--选择图片组件开始-->
+    <!--limit=1设置只能选择一张图片-->
     <el-upload
+            limit="1"
             action="/upload"
             name="picFile"
             list-type="picture-card"
@@ -35,17 +37,60 @@
 <script src="js/eui.js"></script>
 <script src="js/axios.min.js"></script>
 <script>
-  new Vue({
+  let v = new Vue({
     el: '#app',
-    data: function() {
+    data() {
       return {
-
-      }
+        dialogImageUrl: '',
+        dialogVisible: false,
+        weibo:{
+          content:"",
+          urls:""
+        }
+      };
     },
-    methods:{
-      goBack(){
-        //返回上一页面
-        history.back();
+    methods: {
+      handleRemove(file, fileList) {
+        console.log(file, fileList);
+        axios.get("/remove?name=" + file.response).then(function (response) {
+          console.log("删除完成!");
+        })
+        //遍历fileList数组取出数组file对象的图片路径装进一个新的数组里面
+        let arr = [];
+        for (let file of fileList) {
+          //push往数组中添加元素 file.response图片路径
+          arr.push(file.response);
+        }
+        //把数组中多个图片路径 合并成一个字符串赋值给urls
+        v.weibo.urls = arr.toString();
+
+      },
+      handlePictureCardPreview(file) {
+        this.dialogImageUrl = file.url;
+        this.dialogVisible = true;
+      },
+      handleSuccess(response,file, fileList) {
+        //遍历fileList数组取出数组file对象的图片路径装进一个新的数组里面
+        let arr = [];
+        for (let file of fileList) {
+          //push往数组中添加元素 file.response图片路径
+          arr.push(file.response);
+        }
+        //把数组中多个图片路径 合并成一个字符串赋值给urls
+        v.weibo.urls = arr.toString();
+      },
+      send(){
+        //发请求 发布微博
+        axios.post("/insert",v.weibo).then(function (response) {
+          if (response.data==1){
+            alert("发布微博成功!");
+            location.href="/";//回到首页
+          }else{
+            alert("请先登录!");
+            location.href = "/login.html";
+          }
+
+        })
       }
     }
   })
