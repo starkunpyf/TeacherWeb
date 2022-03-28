@@ -45,7 +45,7 @@
     <div style="width: 1200px;margin: 0 auto">
       <img src="imgs/logo.png" style="width: 300px;vertical-align: middle" alt="">
       <span style="margin-left: 50px">
-        <a href="" style="color: #0aa1ed">首页</a><el-divider direction="vertical"></el-divider>
+        <a href="/" style="color: #0aa1ed">首页</a><el-divider direction="vertical"></el-divider>
         <a href="">热点咨询</a><el-divider direction="vertical"></el-divider>
         <a href="">社会招聘</a><el-divider direction="vertical"></el-divider>
         <a href="">校园招聘</a><el-divider direction="vertical"></el-divider>
@@ -128,13 +128,12 @@
       }
     },methods:{
       handleSelect(index){
-        console.log(index);
-        //传递过来的index 其实就是分类的id
-        //跳转到新的页面显示这个分类下的商品信息
-        if (index!=-1){//判断出点击的不是搜索框
-          location.href="/result.html?cid="+index;
+        //如果点击的不是搜索 则通过传递过来的分类id查询所有商品 此时index就是传递过来点击的分类id
+        if (index!=-1){
+          axios.get("/product/selectByCid?cid="+index).then(function (response) {
+            v.productArr = response.data;
+          })
         }
-
       }
     },
     created:function () {
