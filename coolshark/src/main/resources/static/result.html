@@ -144,7 +144,12 @@
       })
       //得到地址栏中的分类id
       let cid = location.search.split("=")[1];
+      //让首页点击的分类在此页面中显示被选中
       this.selectIndex=cid;
+      //查询此分类下所有商品的数据
+      axios.get("/product/selectByCid?cid="+cid).then(function (response) {
+        v.productArr = response.data;
+      })
 
     }
   })

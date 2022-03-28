@@ -56,5 +56,11 @@ public class ProductController {
         return mapper.selectById(id);
     }
 
+    @RequestMapping("/product/selectByCid")
+    public List<Product> selectByCid(int cid){
+        System.out.println("cid = " + cid);
+        return mapper.selectByCid(cid);
+    }
+
 
 }
