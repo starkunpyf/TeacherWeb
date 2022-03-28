@@ -73,34 +73,7 @@
     <!--蓝条结束-->
   </el-header>
   <el-main style="width: 1200px;margin: 100px auto 0 auto">
-    <el-row :gutter="20">
-      <el-col :span="18">
-        <!--走马灯开始-->
-        <el-carousel trigger="click" height="300px">
-          <el-carousel-item v-for="b in bannerArr" >
-            <img :src="b.url" style="width: 100%;height: 100%" alt="">
-          </el-carousel-item>
-        </el-carousel>
-        <!--走马灯结束-->
-      </el-col>
-      <el-col :span="6">
-        <el-card>
-          <h3><i style="font-weight: bold" class="el-icon-trophy"></i>销量最高</h3>
-          <el-divider></el-divider>
-          <!--销量排行榜开始-->
-          <el-table :data="topArr" style="width: 500px">
-            <!--type="index" 列的内容为序号-->
-            <el-table-column type="index" label="排名">
-            </el-table-column>
-            <el-table-column prop="title" label="商品名">
-            </el-table-column>
-            <el-table-column prop="saleCount" label="销量">
-            </el-table-column>
-          </el-table>
-          <!--销量排行榜结束-->
-        </el-card>
-      </el-col>
-    </el-row>
+
     <!--商品列表开始-->
       <el-row :gutter="20">
         <el-col :span="6" v-for="p in productArr">
@@ -149,13 +122,6 @@
     data: function() {
       return {
         wd:"",
-        bannerArr:[],
-        topArr:[{title:"小米12pro",saleCount:876543},
-          {title:"华为手表",saleCount:76543},
-          {title:"最生活毛巾",saleCount:6543},
-          {title:"双飞燕鼠标",saleCount:543},
-          {title:"耐克运动服",saleCount:43},
-          {title:"苹果手机",saleCount:3}],
         productArr:[],
         categoryArr:[]
       }
@@ -175,14 +141,7 @@
       axios.get("/category/select").then(function (response) {
           v.categoryArr = response.data;
       })
-      //发请求获取所有轮播图信息
-      axios.get("/banner/select").then(function (response) {
-          v.bannerArr = response.data;
-      })
-      //发请求获取所有商品信息
-      axios.get("/product/select/index").then(function (response) {
-        v.productArr = response.data;
-      })
+
 
     }
   })
