@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.Date;
 import java.util.List;
@@ -42,11 +43,16 @@ public class ProductController {
     }
 
     @RequestMapping("/product/selectById")
-    public Product selectById(int id){
+    public Product selectById(int id, HttpSession session){
         System.out.println("id = " + id);
-        //让浏览量+1
-        mapper.updateViewCount(id);
-
+        //取出Session里面第一次浏览时保存的信息 如果没取到说明是第一次
+        String info = (String) session.getAttribute("view"+id);
+        if (info==null){
+            //让浏览量+1
+            mapper.updateViewCount(id);
+            //此时是第一次访问 把商品id保存到Session里面
+            session.setAttribute("view"+id,"浏览过");
+        }
         return mapper.selectById(id);
     }
 

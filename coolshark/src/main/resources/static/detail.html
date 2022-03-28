@@ -81,7 +81,12 @@
     <el-row gutter="20">
       <el-col span="12">
         <el-card>
-          <img :src="p.url" width="100%">
+          <!--大图预览-->
+          <div class="demo-image__preview">
+            <el-image :src="p.url" style="width: 100%"
+              :preview-src-list="[p.url]"></el-image>
+          </div>
+          <!--<img :src="p.url" width="100%">-->
         </el-card>
       </el-col>
       <el-col span="12">
