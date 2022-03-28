@@ -28,4 +28,9 @@ public interface ProductMapper {
     @Result(column = "sale_count",property = "saleCount")
     List<Product> selectIndex();
 
+    @Select("select id,title,url,price,old_price,sale_count,view_count from product where id=#{id}")
+    @Result(column = "old_price",property = "oldPrice")
+    @Result(column = "sale_count",property = "saleCount")
+    @Result(column = "view_count",property = "viewCount")
+    Product selectById(int id);
 }
