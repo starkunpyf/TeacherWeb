@@ -33,4 +33,7 @@ public interface ProductMapper {
     @Result(column = "sale_count",property = "saleCount")
     @Result(column = "view_count",property = "viewCount")
     Product selectById(int id);
+
+    @Update("update product set view_count=view_count+1 where id=#{id}")
+    void updateViewCount(int id);
 }

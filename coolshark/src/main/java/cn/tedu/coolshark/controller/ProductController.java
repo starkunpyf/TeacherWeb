@@ -44,6 +44,9 @@ public class ProductController {
     @RequestMapping("/product/selectById")
     public Product selectById(int id){
         System.out.println("id = " + id);
+        //让浏览量+1
+        mapper.updateViewCount(id);
+
         return mapper.selectById(id);
     }
 
