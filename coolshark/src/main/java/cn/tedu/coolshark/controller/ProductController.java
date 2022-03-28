@@ -41,4 +41,5 @@ public class ProductController {
        return mapper.selectIndex();
     }
 
+
 }
