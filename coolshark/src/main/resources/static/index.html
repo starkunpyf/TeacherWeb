@@ -181,6 +181,11 @@
       axios.get("/banner/select").then(function (response) {
           v.bannerArr = response.data;
       })
+      //发请求获取所有作品信息
+      axios.get("/product/select/index").then(function (response) {
+        v.productArr = response.data;
+      })
+
     }
   })
 </script>

@@ -23,4 +23,9 @@ public interface ProductMapper {
     @Delete("delete from product where id=#{id}")
     void deleteById(int id);
 
+    @Select("select id,title,url,price,old_price,sale_count from product")
+    @Result(column = "old_price",property = "oldPrice")
+    @Result(column = "sale_count",property = "saleCount")
+    List<Product> selectIndex();
+
 }

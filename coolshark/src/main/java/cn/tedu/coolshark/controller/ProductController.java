@@ -36,5 +36,9 @@ public class ProductController {
 
         mapper.deleteById(id);
     }
+    @RequestMapping("/product/select/index")
+    public List<Product> selectIndex(){
+       return mapper.selectIndex();
+    }
 
 }
