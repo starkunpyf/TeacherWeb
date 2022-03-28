@@ -183,6 +183,11 @@
       axios.get("/product/select/index").then(function (response) {
         v.productArr = response.data;
       })
+      //发请求获取排行榜数据
+      axios.get("/product/select/top").then(function (response) {
+        v.topArr = response.data;
+
+      })
 
     }
   })

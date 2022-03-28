@@ -41,4 +41,9 @@ public interface ProductMapper {
     @Result(column = "old_price",property = "oldPrice")
     @Result(column = "sale_count",property = "saleCount")
     List<Product> selectByCid(int cid);
+
+    @Select("select id,title,sale_count from product" +
+            " order by sale_count desc limit 0,6")
+    @Result(column = "sale_count",property = "saleCount")
+    List<Product> selectTop();
 }

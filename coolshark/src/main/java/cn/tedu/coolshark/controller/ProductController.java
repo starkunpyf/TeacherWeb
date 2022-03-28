@@ -62,5 +62,16 @@ public class ProductController {
         return mapper.selectByCid(cid);
     }
 
+    @RequestMapping("/product/select/top")
+    public List<Product> selectTop(){
+        List<Product> list = mapper.selectTop();
+        for (Product p:list) {
+            if (p.getTitle().length()>5){//  非常漂...
+                String title = p.getTitle().substring(0,3)+"...";
+                p.setTitle(title);
+            }
+        }
+        return list;
+    }
 
 }
